@@ -1,0 +1,159 @@
+.experience {
+  min-height: 100vh;
+  background: #000;
+  color: #fff;
+  padding: 120px 20px;
+}
+
+/* Title */
+.exp-title {
+  text-align: center;
+  font-size: 3rem;
+  margin-bottom: 80px;
+}
+
+/* Timeline */
+.timeline {
+  position: relative;
+  max-width: 900px;
+  margin: auto;
+}
+
+/* Base line */
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  width: 2px;
+  height: 100%;
+  background: rgba(255,255,255,0.1);
+  transform: translateX(-50%);
+}
+
+/* Animated progress line */
+.timeline-progress {
+  position: absolute;
+  left: 50%;
+  width: 3px;
+  background: linear-gradient(to bottom, #fff, transparent);
+  transform: translateX(-50%);
+  box-shadow: 0 0 15px rgba(255,255,255,0.8);
+}
+
+/* Row */
+.timeline-row {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: 100px;
+}
+
+/* LEFT */
+.timeline-row.left {
+  justify-content: flex-start;
+}
+
+/* RIGHT */
+.timeline-row.right {
+  justify-content: flex-end;
+}
+
+/* YEAR */
+.year-label {
+  position: absolute;
+  width: 40%;
+  font-size: 0.9rem;
+  color: #aaa;
+  letter-spacing: 1px;
+  transition: 0.3s;
+}
+
+/* Left row → year right side */
+.timeline-row.left .year-label {
+  right: 0;
+  text-align: left;
+}
+
+/* Right row → year left side */
+.timeline-row.right .year-label {
+  left: 0;
+  text-align: right;
+}
+
+/* Hover glow */
+.timeline-row:hover .year-label {
+  color: #fff;
+  text-shadow: 0 0 10px rgba(255,255,255,0.6);
+}
+
+/* Node */
+.node {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 10px #fff;
+}
+
+/* Card */
+.exp-card {
+  width: 40%;
+  padding: 20px;
+  border-radius: 16px;
+
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(20px);
+
+  border: 1px solid rgba(255,255,255,0.1);
+  transition: 0.3s;
+}
+
+.exp-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(255,255,255,0.3);
+}
+
+/* Left card */
+.timeline-row.left .exp-card {
+  margin-right: auto;
+  text-align: right;
+}
+
+/* Right card */
+.timeline-row.right .exp-card {
+  margin-left: auto;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .timeline::before,
+  .timeline-progress {
+    left: 10px;
+  }
+
+  .node {
+    left: 10px;
+  }
+
+  .timeline-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .exp-card {
+    width: 100%;
+    margin-left: 30px;
+    text-align: left !important;
+  }
+
+  .year-label {
+    position: relative;
+    width: 100%;
+    text-align: left !important;
+    margin-left: 30px;
+    margin-bottom: 5px;
+  }
+}

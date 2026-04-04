@@ -1,0 +1,109 @@
+/* Base */
+.hero {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background: #000;
+  color: #fff;
+  overflow: hidden;
+}
+
+/* Gradient Name */
+.gradient-text {
+  background: linear-gradient(90deg, #fff, #aaa, #fff);
+  background-size: 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 4s linear infinite;
+}
+
+@keyframes shine {
+  0% { background-position: 0%; }
+  100% { background-position: 200%; }
+}
+
+/* Content */
+.hero-content {
+  text-align: center;
+  max-width: 750px;
+  z-index: 2;
+}
+
+/* Title */
+.hero-title {
+  font-size: 4rem;
+  font-weight: normal; /* cursive fonts usually don’t need bold */
+  margin-bottom: 20px;
+  font-family: 'Pacifico', cursive; /* cursive style */
+  letter-spacing: 1px; /* optional */
+  color: #fff; /* white for black background */
+}
+
+/* Role */
+.hero-role {
+  margin-top: 10px;
+  font-size: 1.4rem;
+  color: #aaa;
+}
+
+/* Blinking Cursor */
+.cursor {
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+/* Description */
+.hero-desc {
+  margin-top: 20px;
+  font-size: 1.1rem;
+  color: #ccc;
+  line-height: 1.7;
+}
+
+.hero-desc span {
+  color: #fff;
+}
+
+/* Stack */
+.hero-stack {
+  margin-top: 25px;
+  font-size: 0.95rem;
+  color: #777;
+}
+
+/* Cursor Glow */
+.cursor-glow {
+  position: fixed;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(255,255,255,0.08), transparent 70%);
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+/* Particles */
+.particles::before,
+.particles::after {
+  content: "";
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: #fff;
+  box-shadow:
+    100px 200px #fff,
+    300px 400px #fff,
+    500px 100px #fff,
+    700px 300px #fff;
+  animation: float 10s linear infinite;
+}
+
+@keyframes float {
+  from { transform: translateY(0); }
+  to { transform: translateY(-1000px); }
+}

@@ -1,0 +1,91 @@
+.proficiency {
+  min-height: 100vh;
+  background: #000;
+  color: #fff;
+  padding: 120px 20px;
+}
+
+/* Title */
+.prof-title {
+  text-align: center;
+  font-size: 3rem;
+  margin-bottom: 80px;
+}
+
+/* Grid */
+.prof-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 40px;
+  max-width: 900px;
+  margin: auto;
+}
+
+/* Card */
+.prof-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  padding: 30px;
+  border-radius: 18px;
+
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(20px);
+
+  border: 1px solid rgba(255,255,255,0.1);
+
+  transition: 0.3s;
+}
+
+/* Hover */
+.prof-card:hover {
+  transform: translateY(-10px);
+  border-color: rgba(255,255,255,0.3);
+  box-shadow: 0 0 20px rgba(255,255,255,0.2);
+}
+
+/* Circle Wrapper */
+.circle-wrapper {
+  position: relative;
+  width: 110px;
+  height: 110px;
+}
+
+/* SVG */
+.circle-wrapper svg {
+  transform: rotate(-90deg);
+}
+
+/* Background */
+.bg {
+  fill: none;
+  stroke: rgba(255,255,255,0.1);
+}
+
+/* Progress */
+.progress {
+  fill: none;
+  stroke: #fff;
+  stroke-linecap: round;
+  filter: drop-shadow(0 0 6px rgba(255,255,255,0.8));
+}
+
+/* Center Text */
+.circle-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+/* Skill Name */
+.skill-name {
+  margin-top: 15px;
+  font-size: 1rem;
+  text-align: center;
+}

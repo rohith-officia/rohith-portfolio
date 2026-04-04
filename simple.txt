@@ -1,0 +1,351 @@
+import React from "react";
+import { motion } from "framer-motion";
+import "./css/project.css";
+
+const projects = [
+  {
+    title: "Turf Booking System",
+    desc: "Full-stack booking platform with authentication, slot management, and secure APIs.",
+    tech: ["Django", "DRF", "JWT", "PostgreSQL"],
+    github: "#"
+  },
+  {
+    title: "News Aggregator API",
+    desc: "Backend system that aggregates and filters news using REST APIs.",
+    tech: ["Django", "REST API", "JSON"],
+    github: "#"
+  },
+  {
+    title: "Portfolio Website",
+    desc: "Modern portfolio built with React and smooth UI interactions.",
+    tech: ["React", "Framer Motion", "CSS"],
+    github: "#"
+  },
+  {
+    title: "Grievance System",
+    desc: "Role-based complaint system with authentication and tracking.",
+    tech: ["Spring Boot", "MySQL", "JWT"],
+    github: "#"
+  }
+];
+
+export default function Projects() {
+  return (
+    <section className="projects" id="project">
+
+      <h2 className="projects-title">Projects</h2>
+
+      <div className="projects-container">
+
+        {projects.map((project, index) => (
+          <motion.div
+            key={index}
+            className="project-row"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: index * 0.08 }}
+            viewport={{ once: true }}
+          >
+
+            {/* Left */}
+            <div className="project-left">
+              <h3>{project.title}</h3>
+              <p>{project.desc}</p>
+            </div>
+
+            {/* Right */}
+            <div className="project-right">
+              <div className="project-tech">
+                {project.tech.map((t, i) => (
+                  <span key={i}>{t}</span>
+                ))}
+              </div>
+
+              <a href={project.github} target="_blank" rel="noreferrer">
+                View Code →
+              </a>
+            </div>
+
+          </motion.div>
+        ))}
+
+      </div>
+
+    </section>
+  );
+}
+
+
+------------------------------------------------
+
+
+.projects {
+  min-height: 100vh;
+  background: #000;
+  color: #fff;
+  padding: 100px 20px;
+}
+
+/* Title */
+.projects-title {
+  text-align: center;
+  font-size: 2.4rem;
+  margin-bottom: 60px;
+}
+
+/* Container */
+.projects-container {
+  max-width: 900px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+/* Row */
+.project-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+
+  transition: 0.3s;
+}
+
+/* Hover */
+.project-row:hover {
+  border-color: rgba(255,255,255,0.2);
+}
+
+/* Left */
+.project-left h3 {
+  font-size: 1.2rem;
+  margin-bottom: 6px;
+}
+
+.project-left p {
+  font-size: 0.9rem;
+  color: #bbb;
+  max-width: 500px;
+}
+
+/* Right */
+.project-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+/* Tech */
+.project-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: flex-end;
+}
+
+.project-tech span {
+  font-size: 0.7rem;
+  padding: 4px 8px;
+  border-radius: 6px;
+  background: rgba(255,255,255,0.08);
+}
+
+/* Link */
+.project-right a {
+  font-size: 0.85rem;
+  color: #fff;
+  text-decoration: none;
+  position: relative;
+}
+
+/* Underline animation */
+.project-right a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+
+  width: 0%;
+  height: 1px;
+  background: #fff;
+
+  transition: 0.3s;
+}
+
+.project-right a:hover::after {
+  width: 100%;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .project-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .project-right {
+    align-items: flex-start;
+  }
+}
+
+------------------------------------------
+
+.projects-section {
+  min-height: 100vh;
+  background: #0a0a0a;
+  color: #fff;
+  padding: 80px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Inter', sans-serif;
+}
+
+.projects-title {
+  font-size: 2.8rem;
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.stack-wrapper {
+  position: relative;
+  width: 800px;
+  height: 800px;
+}
+
+.project-card {
+  position: absolute;
+  top: 0;
+  left: -3%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 900px;
+  height: 450px;
+  padding: 30px;
+  border-radius: 30px;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 15px 50px rgba(255,255,255,0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* align items from top */
+  cursor: pointer;
+  transform-origin: top center;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.project-card h3 {
+  font-size: 1.7rem;
+  font-weight: bold;
+  margin: 0;
+  margin-top: 20px; /* push title slightly down */
+}
+
+.project-card p {
+  font-size: 1rem;
+  color: #ccc;
+  margin: 0;
+  margin-top: auto;  /* pushes description to bottom */
+  margin-bottom: 20px; /* optional spacing from bottom edge */
+  line-height: 1.5;
+}
+.project-tech {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.project-tech span {
+  font-size: 0.8rem;
+  padding: 4px 10px;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  transition: all 0.2s ease;
+}
+
+.project-card:hover {
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.6), 0 0 60px rgba(0, 200, 255, 0.4);
+  transform: scale(1.03);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-tech span:hover {
+  background: rgba(255,255,255,0.2);
+}
+
+.git-circle {
+  position: absolute;
+  bottom: 20px;
+  right: 15px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s;
+}
+
+.git-circle:hover {
+  background: rgba(255,255,255,0.3);
+  transform: scale(1.1);
+}
+
+.git-circle svg {
+  width: 20px;
+  height: 20px;
+  stroke: #fff;
+}
+
+/* Carousel buttons */
+.carousel-btn {
+  position: absolute;
+  top: 30%; /* vertically centered */
+  transform: translateY(-50%);
+  width: 50px;
+  height: 50px;
+  background: rgba(255,255,255,0.05);
+  border: none;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  color: #fff;
+  cursor: pointer;
+  transition: 0.3s;
+  z-index: 1000;
+}
+
+/* Left button further from left */
+.carousel-btn.btn-left {
+  left: 20px; /* adjust space from left edge */
+}
+
+/* Right button further from right */
+.carousel-btn.btn-right {
+  right: 20px; /* adjust space from right edge */
+}
+
+/* Optional hover effect */
+.carousel-btn:hover {
+  background: rgba(255,255,255,0.2);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-btn:hover {
+  background: rgba(255,255,255,0.2);
+  transform: scale(1.1);
+}
+
+.carousel-btn.left {
+  left: -200px;
+}
+
+.carousel-btn.right {
+  right: -200px;
+}

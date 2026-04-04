@@ -1,0 +1,27 @@
+/* Global */
+body {
+  margin: 0;
+  background: #000;
+  color: white;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Hero */
+.hero {
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 60px;
+}
+
+.hero p {
+  color: #aaa;
+  max-width: 500px;
+}
