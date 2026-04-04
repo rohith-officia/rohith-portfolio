@@ -1,14 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import { motion } from "framer-motion";
 import "./css/hero.css";
 
 export default function Hero() {
-  const roles = [
-    "Software Developer",
-    "Spring Boot Developer",
-    "Django Developer",
-    "React Developer"
-  ];
+  // Use useMemo to ensure roles array is stable for useEffect dependencies
+  const roles = useMemo(
+    () => [
+      "Software Developer",
+      "Spring Boot Developer",
+      "Django Developer",
+      "React Developer"
+    ],
+    []
+  );
 
   const [text, setText] = useState("");
   const [roleIndex, setRoleIndex] = useState(0);
@@ -23,13 +27,14 @@ export default function Hero() {
       }, 60);
       return () => clearTimeout(timeout);
     } else {
-      setTimeout(() => {
+      const timeout = setTimeout(() => {
         setText("");
         setCharIndex(0);
         setRoleIndex((prev) => (prev + 1) % roles.length);
       }, 1500);
+      return () => clearTimeout(timeout);
     }
-  }, [charIndex, roleIndex]);
+  }, [charIndex, roleIndex, roles]); // ✅ include roles
 
   // Mouse Glow
   useEffect(() => {
@@ -46,7 +51,6 @@ export default function Hero() {
 
   return (
     <section id="hero" className="hero">
-
       {/* Cursor Glow */}
       <div className="cursor-glow"></div>
 
@@ -59,18 +63,13 @@ export default function Hero() {
         animate="show"
         variants={{
           hidden: {},
-          show: {
-            transition: { staggerChildren: 0.2 }
-          }
+          show: { transition: { staggerChildren: 0.2 } },
         }}
       >
         {/* Name */}
         <motion.h1
           className="hero-title gradient-text"
-          variants={{
-            hidden: { opacity: 0, y: 50 },
-            show: { opacity: 1, y: 0 }
-          }}
+          variants={{ hidden: { opacity: 0, y: 50 }, show: { opacity: 1, y: 0 } }}
         >
           Hey..!, I'm R Rohith
         </motion.h1>
@@ -78,21 +77,16 @@ export default function Hero() {
         {/* Typing Role */}
         <motion.h2
           className="hero-role"
-          variants={{
-            hidden: { opacity: 0 },
-            show: { opacity: 1 }
-          }}
+          variants={{ hidden: { opacity: 0 }, show: { opacity: 1 } }}
         >
-          {text}<span className="cursor">|</span>
+          {text}
+          <span className="cursor">|</span>
         </motion.h2>
 
         {/* Description */}
         <motion.p
           className="hero-desc"
-          variants={{
-            hidden: { opacity: 0, y: 20 },
-            show: { opacity: 1, y: 0 }
-          }}
+          variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0 } }}
         >
           I build scalable backend systems with <span>Django</span> & <span>Spring Boot</span>,
           and craft modern UI using <span>React</span>.
@@ -103,14 +97,10 @@ export default function Hero() {
         {/* Stack */}
         <motion.div
           className="hero-stack"
-          variants={{
-            hidden: { opacity: 0 },
-            show: { opacity: 1 }
-          }}
+          variants={{ hidden: { opacity: 0 }, show: { opacity: 1 } }}
         >
           Java • Spring Boot • Django • React • AWS • SQL • DSA
         </motion.div>
-
       </motion.div>
     </section>
   );
