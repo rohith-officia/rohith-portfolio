@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useMemo } from "react";
 import "./css/navbar.css";
 
 export default function Navbar() {
@@ -6,14 +6,18 @@ export default function Navbar() {
   const indicatorRef = useRef(null);
   const itemsRef = useRef([]);
 
-    const menuItems = [
-    { name: "Home", id: "hero" },
-    { name: "About", id: "about" },
-    { name: "Journey", id: "experience" },
-    { name: "Project", id: "project" },
-    { name: "Proficiency", id: "proficiency" }, // ✅ FIXED
-    { name: "Services", id: "services" }
-  ];
+  // Stable menu items array
+  const menuItems = useMemo(
+    () => [
+      { name: "Home", id: "hero" },
+      { name: "About", id: "about" },
+      { name: "Journey", id: "experience" },
+      { name: "Project", id: "project" },
+      { name: "Proficiency", id: "proficiency" },
+      { name: "Services", id: "services" }
+    ],
+    []
+  );
 
   // Scroll on click
   const handleClick = (index, id) => {
@@ -22,10 +26,7 @@ export default function Navbar() {
     const section = document.getElementById(id);
     if (section) {
       const yOffset = -80;
-      const y =
-        section.getBoundingClientRect().top +
-        window.pageYOffset +
-        yOffset;
+      const y = section.getBoundingClientRect().top + window.pageYOffset + yOffset;
 
       window.scrollTo({
         top: y,
@@ -50,7 +51,6 @@ export default function Navbar() {
 
       menuItems.forEach((item, index) => {
         const section = document.getElementById(item.id);
-
         if (section) {
           if (
             scrollPos >= section.offsetTop &&
@@ -64,15 +64,12 @@ export default function Navbar() {
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [menuItems]); // ✅ include menuItems
 
   return (
     <nav className="nav-wrapper">
       {/* LEFT LOGO */}
-      <div
-        className="nav-logo"
-        onClick={() => handleClick(0, "hero")}
-      >
+      <div className="nav-logo" onClick={() => handleClick(0, "hero")}>
         R Rohith
       </div>
 
