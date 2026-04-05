@@ -99,7 +99,7 @@ export default function Hero() {
             rel="noopener noreferrer"
             className="btn"
           >
-            Let’s Talk ᯓ➤
+            Let’s Talk ↗
           </a>
         </motion.div>
       </motion.div>
