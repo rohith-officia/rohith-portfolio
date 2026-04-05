@@ -31,7 +31,6 @@ const projects = [
 
 export default function Projects() {
   const scrollRef = useRef(null);
-  const [selected, setSelected] = useState(null);
 
   useEffect(() => {
     const container = scrollRef.current;
@@ -62,7 +61,6 @@ export default function Projects() {
     const step = () => {
       if (!isDragging) {
         container.scrollLeft += 1;
-        // Reset to start when reaching middle
         if (container.scrollLeft >= container.scrollWidth / 2) {
           container.scrollLeft = 0;
         }
@@ -79,7 +77,7 @@ export default function Projects() {
     };
   }, []);
 
-  // Duplicate the projects for seamless loop
+  // Duplicate projects for seamless loop
   const loopedProjects = [...projects, ...projects];
 
   return (
@@ -91,7 +89,6 @@ export default function Projects() {
           <motion.div
             key={i}
             className="project-card"
-            onClick={() => setSelected(project)}
           >
             <div className="card-content">
               <div className="tags">
@@ -101,31 +98,18 @@ export default function Projects() {
               </div>
               <h3>{project.name}</h3>
               <p>{project.desc}</p>
-              <a href={project.git} target="_blank" className="view-btn">
+              <a
+                href={project.git}
+                target="_blank"
+                rel="noopener noreferrer" // ✅ Fix
+                className="view-btn"
+              >
                 View Code
               </a>
             </div>
           </motion.div>
         ))}
       </div>
-
-      {/* Modal */}
-      {/* {selected && (
-        <div className="modal" onClick={() => setSelected(null)}>
-          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-            <h2>{selected.name}</h2>
-            <p>{selected.desc}</p>
-            <div className="tags">
-              {selected.tech.map((t, i) => (
-                <span key={i}>{t}</span>
-              ))}
-            </div>
-            <a href={selected.git} target="_blank" className="view-btn">
-              View Code
-            </a>
-          </div>
-        </div>
-      )} */}
     </section>
   );
 }
