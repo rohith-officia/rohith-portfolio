@@ -32,7 +32,7 @@ export default function Navbar() {
     }
   };
 
-  // Move indicator under active item
+  // Indicator movement
   useEffect(() => {
     const el = itemsRef.current[active];
     if (el && indicatorRef.current) {
@@ -41,7 +41,7 @@ export default function Navbar() {
     }
   }, [active]);
 
-  // Auto highlight on scroll
+  // Auto highlight + hide on scroll
   useEffect(() => {
     const handleScroll = () => {
       const navbar = document.querySelector(".nav-wrapper");
@@ -59,13 +59,8 @@ export default function Navbar() {
         }
       });
 
-      // Hide navbar on scroll down
       const currentScroll = window.scrollY;
-      if (currentScroll > lastScroll && currentScroll > 100) {
-        setHidden(true);
-      } else {
-        setHidden(false);
-      }
+      setHidden(currentScroll > lastScroll && currentScroll > 100);
       setLastScroll(currentScroll);
     };
 
