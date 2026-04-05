@@ -7,25 +7,25 @@ const projects = [
     name: "Portfolio Website",
     desc: "Modern animated portfolio with smooth UI and interactions.",
     tech: ["React", "Framer Motion", "CSS"],
-    git: "https://github.com/yourusername/portfolio",
+    git: "https://github.com/rohith-officia/rohith-portfolio",
   },
   {
     name: "Turf Booking System",
     desc: "Booking platform with authentication and slot management.",
     tech: ["Django", "JWT", "SQL"],
-    git: "https://github.com/yourusername/turf-booking",
+    git: "https://github.com/rohith-officia/Turf-management",
   },
   {
     name: "News Aggregator API",
     desc: "REST API to fetch categorized and filtered news data.",
     tech: ["Django", "REST API"],
-    git: "https://github.com/yourusername/news-aggregator",
+    git: "https://github.com/rohith-officia/News-Aggregator",
   },
   {
     name: "Grievance Redressal System",
     desc: "Full-stack complaint system with tracking and communication.",
     tech: ["Spring Boot", "PostgreSQL", "JWT"],
-    git: "https://github.com/yourusername/grievance",
+    git: "https://github.com/rohith-officia/grievance-redressal-system",
   },
 ];
 
