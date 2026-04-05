@@ -15,6 +15,7 @@
   margin-bottom: 80px;
   font-weight: 700;
   letter-spacing: -1px;
+  color: #fff;
 }
 
 /* Grid */
@@ -36,12 +37,13 @@
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.12);
   backdrop-filter: blur(18px);
-  transition: transform 0.3s, box-shadow 0.3s;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
   cursor: default;
 }
 .prof-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 12px 25px rgba(0,0,0,0.5);
+  box-shadow: 0 0 25px 6px rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 /* Skill Header */
@@ -58,7 +60,7 @@
 .skill-percent {
   font-size: 0.9rem;
   font-weight: 500;
-  color: #ffffff;
+  color: #fff;
 }
 
 /* Skill Bar */
@@ -73,7 +75,6 @@
   height: 100%;
   border-radius: 10px;
   background: linear-gradient(90deg, #ffffff, #565656);
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
 }
 
 /* Responsive */

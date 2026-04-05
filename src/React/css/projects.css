@@ -1,6 +1,5 @@
 /* ============================= */
 /* 🔥 CONTAINER */
-/* ============================= */
 .projects {
   min-height: 100vh;
   background: #0a0a0a;
@@ -11,7 +10,6 @@
 
 /* ============================= */
 /* 🔥 TITLE */
-/* ============================= */
 .projects-title {
   font-size: 2.8rem;
   text-align: center;
@@ -21,21 +19,20 @@
 
 /* ============================= */
 /* 🔥 SCROLL ROW */
-/* ============================= */
 .projects-scroll {
   display: flex;
   gap: 40px;
-  overflow-x: auto;      /* allow manual scroll */
+  overflow-x: auto;
   padding: 10px 20px 30px;
   justify-content: flex-start;
-  flex-wrap: nowrap;     /* required for infinite loop */
+  flex-wrap: nowrap;
   cursor: grab;
 }
 .projects-scroll:active {
   cursor: grabbing;
 }
 .projects-scroll::-webkit-scrollbar {
-  display: none;          /* hide scrollbar */
+  display: none;
 }
 
 /* ============================= */
@@ -65,7 +62,6 @@
 
 /* ============================= */
 /* 🎬 ENTRY KEYFRAME */
-/* ============================= */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(40px); }
   to { opacity: 1; transform: translateY(0); }
@@ -80,7 +76,7 @@
 }
 
 /* ============================= */
-/* 🔥 GLOW EFFECT */
+/* 🔥 WHITE GLOW EFFECT + ANIMATION */
 .project-card::before {
   content: "";
   position: absolute;
@@ -88,21 +84,31 @@
   height: 140%;
   top: -20%;
   left: -20%;
-  background: linear-gradient(45deg, #ff00ff, #00ffff, #ff9900, #00ffdd);
-  background-size: 400% 400%;
-  filter: blur(50px);
+  background: rgba(255, 255, 255, 0.4);
+  filter: blur(35px);
   opacity: 0;
   z-index: 0;
   transition: opacity 0.4s ease;
 }
+
 .project-card:hover::before {
-  opacity: 0.25;
-  animation: glowMove 6s linear infinite;
+  opacity: 0.35;
+  animation: glowPulse 1.8s ease-in-out infinite, glowMove 4s linear infinite;
 }
+
+/* subtle movement */
 @keyframes glowMove {
-  0% { background-position: 0% }
-  50% { background-position: 100% }
-  100% { background-position: 0% }
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(4px, -4px); }
+  50% { transform: translate(-4px, 4px); }
+  75% { transform: translate(4px, 4px); }
+  100% { transform: translate(0, 0); }
+}
+
+/* gentle pulse */
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.35; }
+  50% { opacity: 0.6; }
 }
 
 /* ============================= */
