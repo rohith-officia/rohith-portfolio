@@ -3,39 +3,36 @@ import "./css/navbar.css";
 
 export default function Navbar() {
   const [active, setActive] = useState(0);
+  const [hidden, setHidden] = useState(false);
+  const [lastScroll, setLastScroll] = useState(0);
   const indicatorRef = useRef(null);
   const itemsRef = useRef([]);
 
-  // Stable menu items array
   const menuItems = useMemo(
     () => [
       { name: "Home", id: "hero" },
       { name: "About", id: "about" },
       { name: "Journey", id: "experience" },
-      { name: "Project", id: "project" },
+      { name: "My-Work", id: "project" },
       { name: "Proficiency", id: "proficiency" },
-      { name: "Services", id: "services" }
+      { name: "Services", id: "services" },
     ],
     []
   );
 
-  // Scroll on click
   const handleClick = (index, id) => {
     setActive(index);
-
     const section = document.getElementById(id);
-    if (section) {
-      const yOffset = -80;
-      const y = section.getBoundingClientRect().top + window.pageYOffset + yOffset;
+    const navbar = document.querySelector(".nav-wrapper");
+    const navbarHeight = navbar ? navbar.offsetHeight : 0;
 
-      window.scrollTo({
-        top: y,
-        behavior: "smooth"
-      });
+    if (section) {
+      const y = section.offsetTop - navbarHeight;
+      window.scrollTo({ top: y, behavior: "smooth" });
     }
   };
 
-  // Indicator movement
+  // Move indicator under active item
   useEffect(() => {
     const el = itemsRef.current[active];
     if (el && indicatorRef.current) {
@@ -44,36 +41,43 @@ export default function Navbar() {
     }
   }, [active]);
 
-  // Auto active on scroll
+  // Auto highlight on scroll
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPos = window.scrollY + 120;
+      const navbar = document.querySelector(".nav-wrapper");
+      const navbarHeight = navbar ? navbar.offsetHeight : 0;
+      const scrollPos = window.scrollY + navbarHeight + 5;
 
       menuItems.forEach((item, index) => {
         const section = document.getElementById(item.id);
         if (section) {
-          if (
-            scrollPos >= section.offsetTop &&
-            scrollPos < section.offsetTop + section.offsetHeight
-          ) {
+          const top = section.offsetTop;
+          const bottom = top + section.offsetHeight;
+          if (scrollPos >= top && scrollPos < bottom) {
             setActive(index);
           }
         }
       });
+
+      // Hide navbar on scroll down
+      const currentScroll = window.scrollY;
+      if (currentScroll > lastScroll && currentScroll > 100) {
+        setHidden(true);
+      } else {
+        setHidden(false);
+      }
+      setLastScroll(currentScroll);
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [menuItems]); // ✅ include menuItems
+  }, [lastScroll, menuItems]);
 
   return (
-    <nav className="nav-wrapper">
-      {/* LEFT LOGO */}
+    <nav className={`nav-wrapper ${hidden ? "hide" : ""}`}>
       <div className="nav-logo" onClick={() => handleClick(0, "hero")}>
         R Rohith
       </div>
-
-      {/* CENTER GLASS NAV */}
       <div className="nav-container">
         <ul className="nav-glass">
           {menuItems.map((item, index) => (
@@ -86,8 +90,6 @@ export default function Navbar() {
               {item.name}
             </li>
           ))}
-
-          {/* Indicator */}
           <span ref={indicatorRef} className="nav-indicator"></span>
         </ul>
       </div>

@@ -1,78 +1,131 @@
-import React from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import "./css/projects.css";
 
 const projects = [
   {
     name: "Portfolio Website",
-    desc: "My personal portfolio built with React and Framer Motion for smooth animations, responsive design, and interactive experience.",
-    tech: ["React", "Framer Motion", "CSS", "JS"],
-    git: "https://github.com/yourusername/portfolio"
+    desc: "Modern animated portfolio with smooth UI and interactions.",
+    tech: ["React", "Framer Motion", "CSS"],
+    git: "https://github.com/yourusername/portfolio",
   },
   {
     name: "Turf Booking System",
-    desc: "Full backend with Django, DRF, JWT authentication, and frontend integration with React for smooth booking flow.",
-    tech: ["Django", "DRF", "JWT", "SQL"],
-    git: "https://github.com/yourusername/turf-booking"
+    desc: "Booking platform with authentication and slot management.",
+    tech: ["Django", "JWT", "SQL"],
+    git: "https://github.com/yourusername/turf-booking",
   },
   {
     name: "News Aggregator API",
-    desc: "Aggregates news from multiple sources with REST API endpoints, filtered by category, date, and source for frontend consumption.",
-    tech: ["Django", "Python", "REST API"],
-    git: "https://github.com/yourusername/news-aggregator"
+    desc: "REST API to fetch categorized and filtered news data.",
+    tech: ["Django", "REST API"],
+    git: "https://github.com/yourusername/news-aggregator",
   },
   {
-    name: "Freelance Projects",
-    desc: "Multiple freelance projects including web apps, backend solutions, and API integrations for small businesses.",
-    tech: ["React", "Django", "AWS", "SQL"],
-    git: "https://github.com/yourusername/freelance-projects"
+    name: "Grievance Redressal System",
+    desc: "Full-stack complaint system with tracking and communication.",
+    tech: ["Spring Boot", "PostgreSQL", "JWT"],
+    git: "https://github.com/yourusername/grievance",
   },
-{
-  "name": "Grievance Redressal System",
-  "desc": "A full-stack grievance management platform allowing users to register complaints, track their status, communicate with officers, and receive updates in real-time.",
-  "tech": ["Spring Boot", "PostgreSQL", "REST API", "JWT Authentication"],
-  "git": "https://github.com/yourusername/grievance-redressal-system"
-}
 ];
 
 export default function Projects() {
+  const scrollRef = useRef(null);
+  const [selected, setSelected] = useState(null);
+
+  useEffect(() => {
+    const container = scrollRef.current;
+    let isDragging = false;
+    let startX, scrollLeft;
+
+    const mouseDown = (e) => {
+      isDragging = true;
+      startX = e.pageX - container.offsetLeft;
+      scrollLeft = container.scrollLeft;
+    };
+    const mouseUp = () => { isDragging = false; };
+    const mouseLeave = () => { isDragging = false; };
+    const mouseMove = (e) => {
+      if (!isDragging) return;
+      e.preventDefault();
+      const x = e.pageX - container.offsetLeft;
+      const walk = (x - startX) * 2;
+      container.scrollLeft = scrollLeft - walk;
+    };
+
+    container.addEventListener("mousedown", mouseDown);
+    container.addEventListener("mouseup", mouseUp);
+    container.addEventListener("mouseleave", mouseLeave);
+    container.addEventListener("mousemove", mouseMove);
+
+    // Infinite scroll
+    const step = () => {
+      if (!isDragging) {
+        container.scrollLeft += 1;
+        // Reset to start when reaching middle
+        if (container.scrollLeft >= container.scrollWidth / 2) {
+          container.scrollLeft = 0;
+        }
+      }
+      requestAnimationFrame(step);
+    };
+    step();
+
+    return () => {
+      container.removeEventListener("mousedown", mouseDown);
+      container.removeEventListener("mouseup", mouseUp);
+      container.removeEventListener("mouseleave", mouseLeave);
+      container.removeEventListener("mousemove", mouseMove);
+    };
+  }, []);
+
+  // Duplicate the projects for seamless loop
+  const loopedProjects = [...projects, ...projects];
+
   return (
-    <section className="projects" id="project">
-      <h2 className="projects-title">Projects</h2>
-      <div className="projects-grid">
-        {projects.map((project, i) => (
+    <section id="project" className="projects"> 
+      <h2 className="projects-title">My Work</h2>
+
+      <div className="projects-scroll" ref={scrollRef}>
+        {loopedProjects.map((project, i) => (
           <motion.div
             key={i}
             className="project-card"
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: i * 0.2 }}
+            onClick={() => setSelected(project)}
           >
-            <h3>{project.name}</h3>
-            <p>{project.desc}</p>
-            <div className="project-tech">
-              {project.tech.map((t, j) => <span key={j}>{t}</span>)}
+            <div className="card-content">
+              <div className="tags">
+                {project.tech.map((t, j) => (
+                  <span key={j}>{t}</span>
+                ))}
+              </div>
+              <h3>{project.name}</h3>
+              <p>{project.desc}</p>
+              <a href={project.git} target="_blank" className="view-btn">
+                View Code
+              </a>
             </div>
-            <a
-              className="git-circle"
-              href={project.git}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth="2"
-                stroke="currentColor"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </a>
           </motion.div>
         ))}
       </div>
+
+      {/* Modal */}
+      {/* {selected && (
+        <div className="modal" onClick={() => setSelected(null)}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <h2>{selected.name}</h2>
+            <p>{selected.desc}</p>
+            <div className="tags">
+              {selected.tech.map((t, i) => (
+                <span key={i}>{t}</span>
+              ))}
+            </div>
+            <a href={selected.git} target="_blank" className="view-btn">
+              View Code
+            </a>
+          </div>
+        </div>
+      )} */}
     </section>
   );
 }

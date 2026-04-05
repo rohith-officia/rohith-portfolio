@@ -107,3 +107,55 @@
   from { transform: translateY(0); }
   to { transform: translateY(-1000px); }
 }
+
+/* Buttons Container */
+.hero-buttons {
+  margin-top: 30px;
+  display: flex;
+  gap: 18px;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Base Button (Glass Style) */
+.btn {
+  padding: 10px 24px;
+  font-size: 0.9rem;
+  border-radius: 50px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  color: #fff;
+
+  /* Glass Effect */
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* Hover (Glass Highlight) */
+.btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  transform: translateY(-2px);
+}
+
+/* Active Click */
+.btn:active {
+  transform: scale(0.95);
+}
+
+/* Optional: slight glow on hover */
+.btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50px;
+  background: rgba(255, 255, 255, 0.08);
+  opacity: 0;
+  transition: 0.3s;
+}
+
+.btn:hover::before {
+  opacity: 1;
+}

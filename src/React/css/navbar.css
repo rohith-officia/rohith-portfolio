@@ -1,51 +1,52 @@
-/* Wrapper */
+/* ============================= */
+/* NAV WRAPPER */
 .nav-wrapper {
   position: fixed;
   top: 20px;
   width: 100%;
   z-index: 1000;
+  transition: top 0.3s ease;
 }
 
-/* Logo */
+/* Hide on scroll */
+.nav-wrapper.hide {
+  top: -100px;
+}
+
+/* LOGO */
 .nav-logo {
   position: absolute;
   left: 40px;
   top: 50%;
-  font-family: 'Pacifico', cursive; 
   transform: translateY(-50%);
-
+  font-family: 'Pacifico', cursive;
   font-size: 1.4rem;
   font-weight: 600;
   color: #fff;
   cursor: pointer;
 }
 
-/* Center Container */
+/* CENTER NAV CONTAINER */
 .nav-container {
   display: flex;
   justify-content: center;
 }
 
-/* Glass Navbar */
+/* GLASS NAVBAR */
 .nav-glass {
   display: flex;
   gap: 28px;
   padding: 8px 25px;
-
   width: 550px;
-
   border-radius: 50px;
-
   background: rgba(255, 255, 255, 0.07);
   backdrop-filter: blur(18px);
-
   border: 1px solid rgba(255, 255, 255, 0.12);
-
   list-style: none;
   position: relative;
 }
 
-/* Items */
+/* NAV ITEMS */
 .nav-glass li {
   cursor: pointer;
   font-size: 0.9rem;
@@ -55,12 +56,11 @@
   transition: 0.3s;
 }
 
-/* Hover */
 .nav-glass li:hover {
   transform: translateY(-1px);
 }
 
-/* Glass Hover */
+/* Hover Glass Effect */
 .nav-glass li::before {
   content: "";
   position: absolute;
@@ -75,14 +75,15 @@
   opacity: 1;
 }
 
-/* Click */
+/* Click effect */
 .nav-glass li:active {
   transform: scale(0.9);
 }
 
-/* Active */
+/* Active Item */
 .nav-glass li.active {
   color: #fff;
+  font-weight: 600;
 }
 
 /* Indicator */
@@ -90,7 +91,21 @@
   position: absolute;
   bottom: 4px;
   height: 2px;
-  background: linear-gradient(90deg, #fff, #aaa);
+  background: #fff;
   border-radius: 10px;
   transition: all 0.3s ease;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .nav-glass {
+    width: 100%;
+    padding: 8px 15px;
+    gap: 15px;
+  }
+
+  .nav-logo {
+    left: 20px;
+    font-size: 1.2rem;
+  }
 }
