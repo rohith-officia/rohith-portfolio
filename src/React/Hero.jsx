@@ -156,7 +156,7 @@ export default function Hero() {
             show: { opacity: 1, transition: smooth },
           }}
         >
-          Java • Spring Boot • Django • React • AWS • SQL • DSA
+          Java • Spring Boot • Python • Django • React • AWS • SQL • DSA
         </motion.div>
 
         {/* 🔥 BUTTONS */}
