@@ -39,7 +39,6 @@ export default function Projects() {
   const scrollRef = useRef(null);
   const [active, setActive] = useState("All");
 
-  // 🔥 FILTER LOGIC
   const filteredProjects =
     active === "All"
       ? projects
@@ -91,7 +90,7 @@ export default function Projects() {
     };
   }, []);
 
-  // 🔥 CENTER CARD FIX
+  // 🔥 CENTER CARD
   useEffect(() => {
     const container = scrollRef.current;
     if (!container) return;
@@ -152,7 +151,14 @@ export default function Projects() {
       {/* 🔥 SCROLL */}
       <div className="projects-scroll" ref={scrollRef}>
         {filteredProjects.map((project, i) => (
-          <motion.div key={i} className="project-card">
+          <motion.div
+            key={i}
+            className="project-card"
+            initial={{ opacity: 0, y: 50 }} // start slightly below
+            whileInView={{ opacity: 1, y: 0 }} // fade up on view
+            viewport={{ once: false, amount: 0.3 }} // animate every time scrolls in view
+            transition={{ duration: 0.6, delay: i * 0.1 }}
+          >
             <div className="card-content">
               <div className="tags">
                 {project.tech.map((t, j) => (

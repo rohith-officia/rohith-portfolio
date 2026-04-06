@@ -34,7 +34,7 @@ export default function Services() {
 
   const revealMore = () => {
     setExpanded(true);
-    setVisibleCount(allServices.length); // show all remaining cards
+    setVisibleCount(allServices.length);
   };
 
   const handleMove = (e, card) => {
@@ -61,14 +61,10 @@ export default function Services() {
       <div className="services-grid">
         {allServices.slice(0, visibleCount).map((service, i) => {
           const Icon = service.icon;
-          const isLast = i === 5 && !expanded; // only last visible card before expand
+          const isLast = i === 5 && !expanded;
 
           return (
-            <div
-              key={service.title}
-              className="service-wrapper"
-              style={{ position: "relative" }}
-            >
+            <div key={service.title} className="service-wrapper" style={{ position: "relative" }}>
               {/* Stacked effect behind last card */}
               {isLast &&
                 [2, 1, 0].map((idx) => (
@@ -96,8 +92,9 @@ export default function Services() {
               <motion.div
                 className="service-card"
                 initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
+                viewport={{ once: false, amount: 0.3 }} // triggers every scroll
                 onMouseMove={(e) => handleMove(e, e.currentTarget)}
                 onMouseLeave={(e) => resetMove(e.currentTarget)}
                 onClick={isLast ? revealMore : undefined}

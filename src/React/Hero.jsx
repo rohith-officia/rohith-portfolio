@@ -40,19 +40,17 @@ export default function Hero() {
   // 🔥 Cursor Glow
   useEffect(() => {
     const glow = document.querySelector(".cursor-glow");
-
     const move = (e) => {
       if (glow) {
         glow.style.left = e.clientX + "px";
         glow.style.top = e.clientY + "px";
       }
     };
-
     window.addEventListener("mousemove", move);
     return () => window.removeEventListener("mousemove", move);
   }, []);
 
-  // 🔥 Parallax Effect (Apple feel)
+  // 🔥 Parallax Effect
   useEffect(() => {
     const handleMove = (e) => {
       const x = (e.clientX / window.innerWidth - 0.5) * 20;
@@ -62,7 +60,6 @@ export default function Hero() {
         heroRef.current.style.transform = `translate(${x}px, ${y}px)`;
       }
     };
-
     window.addEventListener("mousemove", handleMove);
     return () => window.removeEventListener("mousemove", handleMove);
   }, []);
@@ -82,32 +79,19 @@ export default function Hero() {
         ref={heroRef}
         className="hero-content"
         initial="hidden"
-        animate="show"
+        whileInView="show"
+        viewport={{ once: false, amount: 0.3 }}
         variants={{
           hidden: {},
-          show: {
-            transition: {
-              staggerChildren: 0.15,
-              delayChildren: 0.3,
-            },
-          },
+          show: { transition: { staggerChildren: 0.15, delayChildren: 0.3 } },
         }}
       >
         {/* 🔥 TITLE */}
         <motion.h1
           className="hero-title gradient-text"
           variants={{
-            hidden: {
-              opacity: 0,
-              y: 40,
-              filter: "blur(10px)",
-            },
-            show: {
-              opacity: 1,
-              y: 0,
-              filter: "blur(0px)",
-              transition: smooth,
-            },
+            hidden: { opacity: 0, y: 40, filter: "blur(10px)" },
+            show: { opacity: 1, y: 0, filter: "blur(0px)", transition: smooth },
           }}
         >
           Hey..!, I'm R Rohith
@@ -118,11 +102,7 @@ export default function Hero() {
           className="hero-role"
           variants={{
             hidden: { opacity: 0, y: 20 },
-            show: {
-              opacity: 1,
-              y: 0,
-              transition: smooth,
-            },
+            show: { opacity: 1, y: 0, transition: smooth },
           }}
         >
           {text}
@@ -134,16 +114,11 @@ export default function Hero() {
           className="hero-desc"
           variants={{
             hidden: { opacity: 0, y: 30 },
-            show: {
-              opacity: 1,
-              y: 0,
-              transition: smooth,
-            },
+            show: { opacity: 1, y: 0, transition: smooth },
           }}
         >
           I build scalable backend systems with <span>Django</span> &{" "}
-          <span>Spring Boot</span>, and craft modern UI using{" "}
-          <span>React</span>.
+          <span>Spring Boot</span>, and craft modern UI using <span>React</span>.
           <br />
           Focused on performance, clean code, and impactful solutions.
         </motion.p>
@@ -152,8 +127,8 @@ export default function Hero() {
         <motion.div
           className="hero-stack"
           variants={{
-            hidden: { opacity: 0 },
-            show: { opacity: 1, transition: smooth },
+            hidden: { opacity: 0, y: 20 },
+            show: { opacity: 1, y: 0, transition: smooth },
           }}
         >
           Java • Spring Boot • Python • Django • React • AWS • SQL • DSA
@@ -164,11 +139,7 @@ export default function Hero() {
           className="hero-buttons"
           variants={{
             hidden: { opacity: 0, scale: 0.95 },
-            show: {
-              opacity: 1,
-              scale: 1,
-              transition: smooth,
-            },
+            show: { opacity: 1, scale: 1, transition: smooth },
           }}
         >
           <a href="/Rohith.Resume.pdf" download className="btn">

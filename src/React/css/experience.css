@@ -1,8 +1,11 @@
+/* ============================= */
+/* 🔥 EXPERIENCE SECTION */
 .experience {
   min-height: 100vh;
   background: #000;
   color: #fff;
   padding: 120px 20px;
+  font-family: 'Inter', sans-serif;
 }
 
 /* Title */
@@ -103,10 +106,8 @@
   width: 40%;
   padding: 20px;
   border-radius: 16px;
-
   background: rgba(255,255,255,0.05);
   backdrop-filter: blur(20px);
-
   border: 1px solid rgba(255,255,255,0.1);
   transition: 0.3s;
 }
@@ -127,7 +128,44 @@
   margin-left: auto;
 }
 
-/* Responsive */
+/* ============================= */
+/* 🔥 ENTRY ANIMATION */
+@keyframes slideInLeft {
+  0% { opacity: 0; transform: translateX(-50px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+  0% { opacity: 0; transform: translateX(50px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+/* Apply animations */
+.timeline-row.left .exp-card,
+.timeline-row.left .year-label {
+  animation: slideInLeft 0.8s ease forwards;
+  opacity: 0;
+}
+
+.timeline-row.right .exp-card,
+.timeline-row.right .year-label {
+  animation: slideInRight 0.8s ease forwards;
+  opacity: 0;
+}
+
+/* Stagger rows for nicer effect */
+.timeline-row:nth-child(odd) .exp-card,
+.timeline-row:nth-child(odd) .year-label {
+  animation-delay: 0.2s;
+}
+
+.timeline-row:nth-child(even) .exp-card,
+.timeline-row:nth-child(even) .year-label {
+  animation-delay: 0.4s;
+}
+
+/* ============================= */
+/* 🔥 RESPONSIVE */
 @media (max-width: 768px) {
   .timeline::before,
   .timeline-progress {

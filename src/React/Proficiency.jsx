@@ -23,7 +23,7 @@ export default function Proficiency() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: i * 0.1 }}
-            viewport={{ once: true }}
+            viewport={{ once: false, amount: 0.3 }} // animate every scroll
           >
             <div className="skill-header">
               <span className="skill-name">{skill.name}</span>
@@ -33,8 +33,9 @@ export default function Proficiency() {
               <motion.div
                 className="skill-progress"
                 initial={{ width: 0 }}
-                animate={{ width: `${skill.level}%` }}
+                whileInView={{ width: `${skill.level}%` }}
                 transition={{ duration: 1.2, ease: "easeInOut" }}
+                viewport={{ once: false, amount: 0.3 }} // fill on every scroll
               />
             </div>
           </motion.div>
