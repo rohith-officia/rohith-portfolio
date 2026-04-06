@@ -119,7 +119,7 @@
 /* Left card */
 .timeline-row.left .exp-card {
   margin-right: auto;
-  text-align: right;
+  text-align: inherit;
 }
 
 /* Right card */

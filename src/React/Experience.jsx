@@ -15,13 +15,13 @@ const experiences = [
   },
   {
     year: "2024 - Present",
-    title: "TCS",
+    title: "Tata Consultancy Services",
     desc: "Built scalable backend systems using Spring Boot."
   },
   {
     year: "2024 - Present",
     title: "Freelancing",
-    desc: "Delivered web apps using Django and React."
+    desc: "Delivered web apps using Springboot , Django and React."
   }
 ];
 
