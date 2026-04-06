@@ -349,3 +349,643 @@ export default function Projects() {
 .carousel-btn.right {
   right: -200px;
 }
+
+-------------------------------------
+
+
+about black 
+
+.about {
+  min-height: 100vh;
+  background: #000;
+  color: #fff;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 100px 40px;
+}
+
+/* Layout */
+.about-wrapper {
+  display: flex;
+  gap: 60px;
+  max-width: 1100px;
+  width: 100%;
+}
+
+/* LEFT */
+.about-left {
+  flex: 1;
+}
+
+/* Title */
+.about-title {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.about-title span {
+  color: #aaa;
+}
+
+/* Description */
+.about-description {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #ccc;
+}
+
+.about-description span {
+  color: #fff;
+  font-weight: 500;
+}
+
+/* Tech */
+.about-tech {
+  margin-top: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.about-tech span {
+  padding: 6px 14px;
+  border-radius: 20px;
+
+  font-size: 0.85rem;
+
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  transition: 0.3s;
+}
+
+.about-tech span:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* Stats */
+.about-stats {
+  display: flex;
+  gap: 40px;
+  margin-top: 40px;
+}
+
+.about-stats div {
+  text-align: center;
+}
+
+.about-stats h3 {
+  font-size: 1.5rem;
+}
+
+.about-stats p {
+  font-size: 0.9rem;
+  color: #aaa;
+}
+
+/* RIGHT */
+.about-right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Glass Card */
+.about-card {
+  width: 100%;
+  max-width: 400px;
+  padding: 25px;
+
+  border-radius: 20px;
+
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  transition: 0.4s;
+}
+
+.about-card:hover {
+  transform: translateY(-8px);
+}
+
+/* Title */
+.card-title {
+  margin-bottom: 20px;
+}
+
+/* Grid */
+.what-i-do-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}
+
+/* Box */
+.what-box {
+  padding: 15px;
+  border-radius: 12px;
+
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  transition: 0.3s;
+}
+
+.what-box:hover {
+  background: rgba(255, 255, 255, 0.12);
+  transform: translateY(-5px);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.what-box h4 {
+  font-size: 0.95rem;
+  margin-bottom: 6px;
+}
+
+.what-box p {
+  font-size: 0.8rem;
+  color: #aaa;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .about-wrapper {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .what-i-do-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+----------------------------------------------------------
+
+project black
+
+/* ============================= */
+/* 🔥 CONTAINER */
+.projects {
+  min-height: 100vh;
+  background: #0a0a0a;
+  color: #fff;
+  padding: 120px 60px 80px;
+  font-family: 'Inter', sans-serif;
+}
+
+/* ============================= */
+/* 🔥 TITLE */
+.projects-title {
+  font-size: 2.8rem;
+  text-align: center;
+  margin-bottom: 60px;
+  letter-spacing: -0.5px;
+}
+
+/* ============================= */
+/* 🔥 TABS */
+.project-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 40px;
+}
+
+.project-tabs button {
+  padding: 10px 20px;
+  border-radius: 20px;
+  border: none;
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.project-tabs button:hover {
+  background: rgba(255,255,255,0.2);
+}
+
+.project-tabs .active {
+  background: #fff;
+  color: #000;
+  font-weight: 600;
+}
+
+/* ============================= */
+/* 🔥 SCROLL ROW */
+.projects-scroll {
+  display: flex;
+  gap: 40px;
+  overflow-x: auto;
+  padding: 10px 20px 30px;
+  flex-wrap: nowrap;
+  cursor: grab;
+}
+
+.projects-scroll:active {
+  cursor: grabbing;
+}
+
+.projects-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* ============================= */
+/* 🔥 CARD (FIXED SIZE + ANIMATION) */
+.project-card {
+  width: 300px;
+  min-width: 300px;
+  max-width: 300px;
+  height: 420px;
+
+  border-radius: 24px;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+
+  box-sizing: border-box;
+
+  /* 🔥 animations */
+  animation:
+    fadeUp 0.8s ease forwards,
+    floatCard 6s ease-in-out infinite;
+
+  transition:
+    box-shadow 0.3s ease,
+    border 0.3s ease,
+    filter 0.3s ease;
+}
+
+/* stagger entry */
+.project-card:nth-child(1) { animation-delay: 0.1s, 0s; }
+.project-card:nth-child(2) { animation-delay: 0.2s, 0s; }
+.project-card:nth-child(3) { animation-delay: 0.3s, 0s; }
+.project-card:nth-child(4) { animation-delay: 0.4s, 0s; }
+
+/* ============================= */
+/* 🎬 ENTRY ANIMATION */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================= */
+/* 🌊 FLOAT ANIMATION (ALL CARDS) */
+@keyframes floatCard {
+  0%   { transform: translateY(0px); }
+  50%  { transform: translateY(-6px); }
+  100% { transform: translateY(0px); }
+}
+
+/* ============================= */
+/* 🔥 CENTER CARD */
+.project-card.center {
+  filter: brightness(1.2);
+
+  border: 1px solid rgba(255,255,255,0.35);
+
+  box-shadow:
+    0 25px 70px rgba(0,0,0,0.8),
+    0 0 25px rgba(255,255,255,0.15);
+
+  animation:
+    fadeUp 0.8s ease forwards,
+    floatCard 5s ease-in-out infinite,
+    pulseGlow 2.5s ease-in-out infinite;
+}
+
+/* ============================= */
+/* ✨ GLOW PULSE */
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow:
+      0 25px 70px rgba(0,0,0,0.8),
+      0 0 10px rgba(255,255,255,0.1);
+  }
+  50% {
+    box-shadow:
+      0 25px 80px rgba(0,0,0,0.9),
+      0 0 30px rgba(255,255,255,0.25);
+  }
+}
+
+/* ============================= */
+/* 🔥 HOVER (NO SIZE CHANGE) */
+.project-card:hover {
+  border: 1px solid rgba(255, 255, 255, 0.25);
+
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.6);
+
+  filter: brightness(1.15);
+}
+
+/* ============================= */
+/* 🔥 GLOW LAYER */
+.project-card::before {
+  content: "";
+  position: absolute;
+  width: 140%;
+  height: 140%;
+  top: -20%;
+  left: -20%;
+  background: rgba(255, 255, 255, 0.3);
+  filter: blur(35px);
+  opacity: 0;
+  transition: 0.4s;
+}
+
+.project-card:hover::before {
+  opacity: 0.25;
+}
+
+/* ============================= */
+/* 🔥 CONTENT */
+.card-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  gap: 12px;
+}
+
+.project-card h3 {
+  font-size: 1.35rem;
+}
+
+.project-card p {
+  font-size: 0.9rem;
+  color: #bbb;
+  line-height: 1.5;
+}
+
+/* ============================= */
+/* 🔥 TAGS */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tags span {
+  font-size: 0.7rem;
+  padding: 4px 10px;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+}
+
+/* ============================= */
+/* 🔥 BUTTON */
+/* ============================= */
+/* 🔥 VIEW BUTTON (SMALL + ANIMATED) */
+.view-btn {
+  margin-top: auto;
+
+  padding: 16px 12px;   /* 🔽 smaller */
+  font-size: 0.8rem;    /* 🔽 smaller text */
+
+  border-radius: 16px;
+
+  text-decoration: none;
+  color: #fff;
+
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(10px);
+
+  border: 1px solid rgba(255,255,255,0.2);
+
+  position: relative;
+  overflow: hidden;
+
+  transition: all 0.3s ease;
+}
+
+/* ✨ hover lift */
+.view-btn:hover {
+  transform: translateY(-3px) scale(1.03);
+  background: rgba(255,255,255,0.2);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+}
+
+/* 💎 shine effect */
+.view-btn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,0.4),
+    transparent
+  );
+}
+
+/* 🚀 shine animation */
+.view-btn:hover::after {
+  left: 100%;
+  transition: 0.6s;
+}
+
+/* 👇 click feedback */
+.view-btn:active {
+  transform: scale(0.96);
+}
+
+/* ============================= */
+/* 📱 RESPONSIVE */
+@media (max-width: 768px) {
+  .projects {
+    padding: 100px 20px 60px;
+  }
+
+  .projects-title {
+    font-size: 2.2rem;
+  }
+
+  .project-card {
+    width: 260px;
+    min-width: 260px;
+    max-width: 260px;
+    height: 380px;
+  }
+} 
+
+--------------------------------------------------------------------------
+
+service dark 
+
+/* ============================= */
+/* 🔥 CONTAINER */
+.services {
+  min-height: 100vh;
+  background: radial-gradient(circle at top, #0f0f0f, #020202);
+  color: #fff;
+  padding: 120px 60px 80px;
+  font-family: 'Inter', sans-serif;
+}
+
+/* ============================= */
+/* 🔥 TITLE */
+.services-title {
+  font-size: 2.4rem;
+  text-align: center;
+  margin-bottom: 70px;
+  font-weight: 500;
+}
+
+/* ============================= */
+/* 🔥 GRID */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 28px;
+  max-width: 950px;
+  margin: auto;
+  perspective: 1200px;
+}
+
+/* ============================= */
+/* 🔥 CARD */
+.service-card {
+  position: relative;
+  padding: 26px 22px;
+  border-radius: 16px;
+
+  background: rgba(255,255,255,0.03);
+  backdrop-filter: blur(18px);
+
+  border: 1px solid rgba(255,255,255,0.06);
+
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+
+  transform-style: preserve-3d;
+}
+
+/* ============================= */
+/* ✨ BORDER GLOW */
+.service-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  padding: 1px;
+
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,0.2),
+    transparent
+  );
+
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+
+  -webkit-mask-composite: xor;
+  opacity: 0;
+  transition: 0.4s;
+}
+
+.service-card:hover::before {
+  opacity: 1;
+}
+
+/* ============================= */
+/* 🌈 CURSOR GLOW */
+.glow {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(255,255,255,0.12), transparent 70%);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  opacity: 0;
+  transition: 0.3s;
+}
+
+.service-card:hover .glow {
+  opacity: 1;
+}
+
+/* ============================= */
+/* 🔥 HOVER */
+.service-card:hover {
+  box-shadow:
+    0 25px 50px rgba(0,0,0,0.8),
+    0 0 25px rgba(255,255,255,0.05);
+}
+
+/* ============================= */
+/* 🔥 ICON (MINIMAL) */
+.service-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 14px;
+
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.06);
+
+  transition: 0.3s;
+}
+
+.service-card:hover .service-icon {
+  transform: translateY(-2px) scale(1.05);
+  background: rgba(255,255,255,0.08);
+}
+
+/* ============================= */
+/* 🔥 TEXT */
+.service-card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+
+.service-card p {
+  font-size: 0.85rem;
+  color: #aaa;
+  line-height: 1.5;
+}
+
+/* ============================= */
+/* 📱 RESPONSIVE */
+@media (max-width: 768px) {
+  .services {
+    padding: 100px 20px 60px;
+  }
+
+  .services-title {
+    font-size: 2rem;
+  }
+} 

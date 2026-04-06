@@ -1,27 +1,44 @@
-/* Global */
 body {
   margin: 0;
-  background: #000;
+  background: #9d9d9d;
   color: white;
   font-family: 'Inter', sans-serif;
 }
-
-/* Hero */
-.hero {
-  height: 90vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-  text-align: center;
+/* Scroll container for snap effect */
+.scroll-container {
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+  height: 100vh;
 }
 
-.hero h1 {
-  font-size: 60px;
+/* Make each section snap */
+.scroll-container section {
+  scroll-snap-align: start;
+}
+
+/* Global Hero Styles */
+.hero h1 {  font-size: 4rem;
+  color: white;
 }
 
 .hero p {
-  color: #aaa;
+  color: #ccc;
   max-width: 500px;
 }
+
+/* Glass Theme */
+.hero,
+.about,
+.services,
+.experience,
+.projects,
+.proficiency{
+  border-radius: 20px;
+  margin: 20px;
+  padding: 40px;
+  border: 1px solid rgba(255,255,255,0.1);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+}
+
+
+

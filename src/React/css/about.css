@@ -1,13 +1,15 @@
+/* ============================= */
+/* Global About Section */
 .about {
   min-height: 100vh;
-  background: #000;
-  color: #fff;
+  background: #f5f5f5; /* light gray background for page */
+  color: #000;
 
   display: flex;
   justify-content: center;
   align-items: center;
-
   padding: 100px 40px;
+  font-family: 'Inter', sans-serif;
 }
 
 /* Layout */
@@ -27,21 +29,22 @@
 .about-title {
   font-size: 3rem;
   margin-bottom: 20px;
+  color: #111;
 }
 
 .about-title span {
-  color: #aaa;
+  color: #555; /* gray accent */
 }
 
 /* Description */
 .about-description {
   font-size: 1.1rem;
   line-height: 1.8;
-  color: #ccc;
+  color: #333;
 }
 
 .about-description span {
-  color: #fff;
+  color: #000;
   font-weight: 500;
 }
 
@@ -58,15 +61,17 @@
   border-radius: 20px;
 
   font-size: 0.85rem;
-
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255,255,255,0.5); /* translucent white */
+  backdrop-filter: blur(10px); /* frosted glass */
+  border: 1px solid rgba(0,0,0,0.1); /* subtle border */
+  color: #000;
 
   transition: 0.3s;
 }
 
 .about-tech span:hover {
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(255,255,255,0.7);
+  border-color: rgba(0,0,0,0.2);
 }
 
 /* Stats */
@@ -82,11 +87,12 @@
 
 .about-stats h3 {
   font-size: 1.5rem;
+  color: #111;
 }
 
 .about-stats p {
   font-size: 0.9rem;
-  color: #aaa;
+  color: #555;
 }
 
 /* RIGHT */
@@ -105,21 +111,22 @@
 
   border-radius: 20px;
 
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(20px);
-
-  border: 1px solid rgba(255, 255, 255, 0.1);
-
+  background: rgba(255,255,255,0.4); /* frosted glass */
+  backdrop-filter: blur(20px); /* blur for glass effect */
+  border: 1px solid rgba(0,0,0,0.1); /* subtle border */
+  box-shadow: 0 8px 30px rgba(0,0,0,0.05);
   transition: 0.4s;
 }
 
 .about-card:hover {
   transform: translateY(-8px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.08);
 }
 
-/* Title */
+/* Title inside card */
 .card-title {
   margin-bottom: 20px;
+  color: #111;
 }
 
 /* Grid */
@@ -134,26 +141,28 @@
   padding: 15px;
   border-radius: 12px;
 
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-
+  background: rgba(255,255,255,0.35);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(0,0,0,0.1);
   transition: 0.3s;
+  color: #111;
 }
 
 .what-box:hover {
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(255,255,255,0.55);
   transform: translateY(-5px);
-  border-color: rgba(255, 255, 255, 0.3);
+  border-color: rgba(0,0,0,0.2);
 }
 
 .what-box h4 {
   font-size: 0.95rem;
   margin-bottom: 6px;
+  color: #111;
 }
 
 .what-box p {
   font-size: 0.8rem;
-  color: #aaa;
+  color: #555;
 }
 
 /* Responsive */

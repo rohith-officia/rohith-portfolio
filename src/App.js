@@ -4,7 +4,8 @@ import Hero from "./React/Hero";
 import About from "./React/About";
 import Proficiency from "./React/Proficiency";
 import Experience from "./React/Experience";
-import Project from "./React/Project"
+import Project from "./React/Project";
+import Services from "./React/Services";
 import "./React/css/styles.css";
 
 
@@ -17,6 +18,7 @@ function App() {
       <Experience />
       <Project />
       <Proficiency />
+      <Services />
   
     </>
   );
