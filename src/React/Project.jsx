@@ -24,7 +24,7 @@ const projects = [
   {
     name: "Grievance Redressal System",
     desc: "Full-stack complaint system with tracking and communication.",
-    tech: ["Spring Boot", "PostgreSQL", "JWT", "React"],
+    tech: ["Spring Boot", "PostgreSQL", "React"],
     git: "https://github.com/rohith-officia/grievance-redressal-system",
   },
   {
