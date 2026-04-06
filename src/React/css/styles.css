@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  background: #9d9d9d;
+  background: #ffffff;
   color: white;
   font-family: 'Inter', sans-serif;
 }
@@ -27,7 +27,7 @@ body {
 }
 
 /* Glass Theme */
-.hero,
+
 .about,
 .services,
 .experience,
