@@ -163,16 +163,27 @@ export default function Hero() {
         <div className="contact-popup">
           <div className="popup-content glass" ref={popupRef}>
             <h3>Let's Connect</h3>
+
             <div className="contact-links">
-              <a href="https://wa.me/1234567890" target="_blank" rel="noopener noreferrer">
+              <a href="https://wa.me/9744093170" target="_blank" rel="noopener noreferrer">
                 <i className="fab fa-whatsapp"></i> WhatsApp
               </a>
-              <a href="https://instagram.com/username" target="_blank" rel="noopener noreferrer">
+
+              <a href="https://www.instagram.com/rohith.officia/" target="_blank" rel="noopener noreferrer">
                 <i className="fab fa-instagram"></i> Instagram
               </a>
-              <a href="mailto:rohith.officia@gmail.com">
-                <i className="fas fa-envelope"></i> Email
-              </a>
+
+              <a href="mailto:rohith.officia@gmail.com?subject=Let's%20Connect&body=Hi%20Rohith%2C"
+              onClick={() => {
+                window.open(
+                  "https://mail.google.com/mail/?view=cm&fs=1&to=rohith.officia@gmail.com&su=Let's%20Connect&body=Hi%20Rohith%2C",
+                  "_blank"
+                );
+              }}
+            >
+              <i className="fas fa-envelope"></i> Email
+            </a>
+
               <a href="https://outlook.live.com/mail/" target="_blank" rel="noopener noreferrer">
                 <i className="fas fa-paper-plane"></i> Outlook
               </a>
