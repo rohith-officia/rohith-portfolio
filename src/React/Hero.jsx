@@ -4,22 +4,19 @@ import "./css/hero.css";
 
 export default function Hero() {
   const roles = useMemo(
-    () => [
-      "Software Developer",
-      "Spring Boot Developer",
-      "Django Developer",
-      "React Developer",
-    ],
+    () => ["Software Developer", "Spring Boot Developer", "Django Developer", "React Developer"],
     []
   );
 
   const [text, setText] = useState("");
   const [roleIndex, setRoleIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
+  const [showPopup, setShowPopup] = useState(false);
 
   const heroRef = useRef(null);
+  const popupRef = useRef(null);
 
-  // 🔥 Typing Effect
+  // Typing Effect
   useEffect(() => {
     if (charIndex < roles[roleIndex].length) {
       const timeout = setTimeout(() => {
@@ -37,7 +34,7 @@ export default function Hero() {
     }
   }, [charIndex, roleIndex, roles]);
 
-  // 🔥 Cursor Glow
+  // Cursor Glow
   useEffect(() => {
     const glow = document.querySelector(".cursor-glow");
     const move = (e) => {
@@ -50,12 +47,11 @@ export default function Hero() {
     return () => window.removeEventListener("mousemove", move);
   }, []);
 
-  // 🔥 Parallax Effect
+  // Parallax Effect
   useEffect(() => {
     const handleMove = (e) => {
       const x = (e.clientX / window.innerWidth - 0.5) * 20;
       const y = (e.clientY / window.innerHeight - 0.5) * 20;
-
       if (heroRef.current) {
         heroRef.current.style.transform = `translate(${x}px, ${y}px)`;
       }
@@ -64,11 +60,28 @@ export default function Hero() {
     return () => window.removeEventListener("mousemove", handleMove);
   }, []);
 
-  const smooth = {
-    type: "spring",
-    stiffness: 60,
-    damping: 20,
-  };
+  // Close popup on click outside or scroll
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (popupRef.current && !popupRef.current.contains(e.target)) {
+        setShowPopup(false);
+      }
+    };
+
+    const handleScroll = () => setShowPopup(false);
+
+    if (showPopup) {
+      document.addEventListener("mousedown", handleClickOutside);
+      window.addEventListener("scroll", handleScroll);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [showPopup]);
+
+  const smooth = { type: "spring", stiffness: 60, damping: 20 };
 
   return (
     <section id="hero" className="hero">
@@ -86,7 +99,6 @@ export default function Hero() {
           show: { transition: { staggerChildren: 0.15, delayChildren: 0.3 } },
         }}
       >
-        {/* 🔥 TITLE */}
         <motion.h1
           className="hero-title gradient-text"
           variants={{
@@ -97,7 +109,6 @@ export default function Hero() {
           Hey..!, I'm R Rohith
         </motion.h1>
 
-        {/* 🔥 ROLE */}
         <motion.h2
           className="hero-role"
           variants={{
@@ -109,7 +120,6 @@ export default function Hero() {
           <span className="cursor">|</span>
         </motion.h2>
 
-        {/* 🔥 DESCRIPTION */}
         <motion.p
           className="hero-desc"
           variants={{
@@ -117,13 +127,11 @@ export default function Hero() {
             show: { opacity: 1, y: 0, transition: smooth },
           }}
         >
-          I build scalable backend systems with <span>Django</span> &{" "}
-          <span>Spring Boot</span>, and craft modern UI using <span>React</span>.
+          I build scalable backend systems with <span>Django</span> & <span>Spring Boot</span>, and craft modern UI using <span>React</span>.
           <br />
           Focused on performance, clean code, and impactful solutions.
         </motion.p>
 
-        {/* 🔥 STACK */}
         <motion.div
           className="hero-stack"
           variants={{
@@ -134,7 +142,6 @@ export default function Hero() {
           Java • Spring Boot • Python • Django • React • AWS • SQL • DSA
         </motion.div>
 
-        {/* 🔥 BUTTONS */}
         <motion.div
           className="hero-buttons"
           variants={{
@@ -142,20 +149,37 @@ export default function Hero() {
             show: { opacity: 1, scale: 1, transition: smooth },
           }}
         >
-          <a href="/Rohith.Resume.pdf" download className="btn">
+          <a href="/Rohith.Resume.pdf" download className="btn hire-btn">
             Download Resume
           </a>
-
-          <a
-            href="https://mail.google.com/mail/?view=cm&fs=1&to=rohith.officia@gmail.com&su=Let's%20Connect"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn talk-btn"
-          >
+          <button className="btn talk-btn" onClick={() => setShowPopup(true)}>
             Let’s Talk ↗
-          </a>
+          </button>
         </motion.div>
       </motion.div>
+
+      {/* ================= POPUP ================= */}
+      {showPopup && (
+        <div className="contact-popup">
+          <div className="popup-content glass" ref={popupRef}>
+            <h3>Let's Connect</h3>
+            <div className="contact-links">
+              <a href="https://wa.me/1234567890" target="_blank" rel="noopener noreferrer">
+                <i className="fab fa-whatsapp"></i> WhatsApp
+              </a>
+              <a href="https://instagram.com/username" target="_blank" rel="noopener noreferrer">
+                <i className="fab fa-instagram"></i> Instagram
+              </a>
+              <a href="mailto:rohith.officia@gmail.com">
+                <i className="fas fa-envelope"></i> Email
+              </a>
+              <a href="https://outlook.live.com/mail/" target="_blank" rel="noopener noreferrer">
+                <i className="fas fa-paper-plane"></i> Outlook
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }
