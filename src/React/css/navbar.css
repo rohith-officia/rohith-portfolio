@@ -192,8 +192,8 @@
 /* MOBILE BUTTON */
 .mobile-menu-btn {
   display: none;
-  width: 34px;
-  height: 34px;
+  width: 30px;
+  height: 20px;
   position: relative;
   cursor: pointer;
   align-items: center;
@@ -202,20 +202,20 @@
 
 .mobile-menu-btn span {
   position: absolute;
-  width: 24px;
-  height: 2.5px;
+  width: 22px;
+  height: 2px;
   background: var(--text-color);
   border-radius: 999px;
   transition: 0.3s ease;
 }
 
 .mobile-menu-btn span:first-child {
-  top: 11px;
+  top: 5px;
   transform: none !important;
 }
 
 .mobile-menu-btn span:last-child {
-  top: 19px;
+  top: 5px;
   transform: none !important;
 }
 
