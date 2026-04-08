@@ -39,7 +39,6 @@ body {
   overflow-y: scroll;
   height: 100vh;
 
-  /* 🔥 ADD THIS */
   padding-top: 90px;
   box-sizing: border-box;
 }
@@ -122,7 +121,8 @@ body {
   .experience,
   .projects,
   .proficiency {
-    margin: 10px;
+    margin-left: 0;
+    margin-right: 0;
     padding: 20px;
     border-radius: 16px;
   }
@@ -152,7 +152,8 @@ body {
   .experience,
   .projects,
   .proficiency {
-    margin: 8px;
+    margin-left: 0;
+    margin-right: 0;
     padding: 16px;
     border-radius: 14px;
   }
