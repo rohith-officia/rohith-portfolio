@@ -99,13 +99,13 @@ export default function Navbar() {
         </ul>
       </div>
 
-      <button className="theme-toggle" onClick={toggleTheme}>
-        <div className={`toggle-track ${theme}`}>
-          <span className="toggle-circle">
-            {theme === "dark" ? "⏾" : "☀"}
-          </span>
-        </div>
-      </button>
+     <button className="theme-toggle" onClick={toggleTheme}>
+  <div className={`toggle-track ${theme}`}>
+    <span className="toggle-circle">
+      {theme === "dark" ? "⏾" : "☀"}
+    </span>
+  </div>
+</button>
     </nav>
   );
 }

@@ -7,6 +7,7 @@
   width: 100%;
   z-index: 1000;
   transition: top 0.3s ease;
+  box-sizing: border-box;
 }
 
 .nav-wrapper.hide {
@@ -25,6 +26,7 @@
   color: var(--text-color);
   cursor: pointer;
   z-index: 20;
+  white-space: nowrap;
 }
 
 /* ============================= */
@@ -34,6 +36,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 
 /* ============================= */
@@ -45,6 +48,7 @@
   gap: 28px;
   padding: 10px 25px;
   width: 600px;
+  max-width: 600px;
   border-radius: 50px;
   background: rgba(127, 127, 127, 0.12);
   backdrop-filter: blur(18px);
@@ -56,6 +60,7 @@
   list-style: none;
   position: relative;
   margin: 0;
+  box-sizing: border-box;
 }
 
 .dark .nav-glass {
@@ -133,7 +138,6 @@
     0 6px 18px rgba(0, 0, 0, 0.4);
 }
 
-/* CIRCLE */
 .toggle-circle {
   width: 26px;
   height: 26px;
@@ -163,11 +167,15 @@
 }
 
 /* ============================= */
-/* 💻 TABLET */
+/* TABLET */
 @media (max-width: 1024px) {
+  .nav-wrapper {
+    top: 30px;
+  }
+
   .nav-logo {
     left: 20px;
-    font-size: 1.2rem;
+    font-size: 1.15rem;
   }
 
   .theme-toggle {
@@ -176,35 +184,41 @@
 
   .nav-glass {
     width: 520px;
-    gap: 18px;
+    max-width: 520px;
+    gap: 16px;
     padding: 10px 18px;
   }
 
   .nav-glass li {
-    font-size: 0.85rem;
-    padding: 6px 6px;
+    font-size: 0.84rem;
+    padding: 6px 5px;
   }
 }
 
 /* ============================= */
-/* 📱 MOBILE */
+/* MOBILE */
 @media (max-width: 768px) {
   .nav-wrapper {
     top: 18px;
   }
 
   .nav-logo {
-    left: 10px;
-    font-size: 0.9rem;
-    max-width: 58px;
+    left: 8px;
+    font-size: 0.78rem;
+    max-width: 42px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
   }
 
+  .theme-toggle {
+    right: 8px;
+  }
+
   .nav-glass {
-    width: calc(100% - 92px);
-    gap: 10px;
+    width: calc(100% - 76px);
+    max-width: calc(100% - 76px);
+    gap: 12px;
     padding: 10px 12px;
     border-radius: 22px;
     overflow-x: auto;
@@ -220,64 +234,15 @@
 
   .nav-glass li {
     font-size: 0.78rem;
-    padding: 6px 3px;
+    padding: 6px 2px;
     white-space: nowrap;
     flex: 0 0 auto;
-  }
-
-  .theme-toggle {
-    right: 10px;
-  }
-
-  .toggle-track {
-    width: 56px;
-    height: 30px;
-    padding: 2px;
-  }
-
-  .toggle-circle {
-    width: 24px;
-    height: 24px;
-    font-size: 12px;
-  }
-
-  .toggle-track.dark .toggle-circle {
-    transform: translateX(26px);
-  }
-}
-
-/* ============================= */
-/* 📱 SMALL MOBILE */
-@media (max-width: 480px) {
-  .nav-wrapper {
-    top: 14px;
-  }
-
-  .nav-logo {
-    left: 8px;
-    font-size: 0.82rem;
-    max-width: 50px;
-  }
-
-  .nav-glass {
-    width: calc(100% - 82px);
-    gap: 8px;
-    padding: 9px 10px;
-    border-radius: 18px;
-  }
-
-  .nav-glass li {
-    font-size: 0.72rem;
-    padding: 5px 2px;
-  }
-
-  .theme-toggle {
-    right: 8px;
   }
 
   .toggle-track {
     width: 52px;
     height: 28px;
+    padding: 2px;
   }
 
   .toggle-circle {
@@ -288,5 +253,52 @@
 
   .toggle-track.dark .toggle-circle {
     transform: translateX(24px);
+  }
+}
+
+/* ============================= */
+/* SMALL MOBILE */
+@media (max-width: 480px) {
+  .nav-wrapper {
+    top: 14px;
+  }
+
+  .nav-logo {
+    left: 6px;
+    font-size: 0.72rem;
+    max-width: 34px;
+  }
+
+  .theme-toggle {
+    right: 6px;
+  }
+
+  .nav-glass {
+    width: calc(100% - 66px);
+    max-width: calc(100% - 66px);
+    gap: 10px;
+    padding: 8px 10px;
+    border-radius: 18px;
+  }
+
+  .nav-glass li {
+    font-size: 0.72rem;
+    padding: 5px 1px;
+  }
+
+  .toggle-track {
+    width: 48px;
+    height: 26px;
+    padding: 2px;
+  }
+
+  .toggle-circle {
+    width: 20px;
+    height: 20px;
+    font-size: 10px;
+  }
+
+  .toggle-track.dark .toggle-circle {
+    transform: translateX(22px);
   }
 }

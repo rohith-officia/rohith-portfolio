@@ -38,6 +38,8 @@ body {
   scroll-snap-type: y mandatory;
   overflow-y: scroll;
   height: 100vh;
+
+  /* 🔥 ADD THIS */
   padding-top: 90px;
   box-sizing: border-box;
 }
