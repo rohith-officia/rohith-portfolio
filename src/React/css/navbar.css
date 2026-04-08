@@ -129,12 +129,10 @@
   justify-content: center;
 }
 
-/* desktop toggle visible by default */
 .desktop-toggle {
   display: flex;
 }
 
-/* mobile theme row hidden by default */
 .mobile-theme-row {
   display: none;
 }
@@ -192,8 +190,8 @@
 /* MOBILE BUTTON */
 .mobile-menu-btn {
   display: none;
-  width: 30px;
-  height: 20px;
+  width: 28px;
+  height: 18px;
   position: relative;
   cursor: pointer;
   align-items: center;
@@ -202,20 +200,19 @@
 
 .mobile-menu-btn span {
   position: absolute;
-  width: 22px;
+  width: 24px;
   height: 2px;
   background: var(--text-color);
   border-radius: 999px;
-  transition: 0.3s ease;
 }
 
 .mobile-menu-btn span:first-child {
-  top: 5px;
+  top: 4px;
   transform: none !important;
 }
 
 .mobile-menu-btn span:last-child {
-  top: 5px;
+  bottom: 4px;
   transform: none !important;
 }
 
@@ -275,15 +272,21 @@
   color: var(--text-color);
 }
 
-.mobile-menu-header button {
+.mobile-close-btn {
   border: none;
   background: transparent;
   color: var(--text-color);
-  font-size: 1.35rem;
+  font-size: 2rem;
+  line-height: 1;
   cursor: pointer;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* theme row inside mobile panel */
 .mobile-menu-links {
   display: flex;
   flex-direction: column;
@@ -369,9 +372,14 @@
   }
 
   .nav-mobile-actions {
-    right: 10px;
-    gap: 10px;
-    height: 36px;
+    right: 22px;
+    top: 50%;
+    transform: translateY(-50%);
+    gap: 0;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .mobile-menu-btn {
@@ -431,26 +439,26 @@
   }
 
   .nav-mobile-actions {
-    right: 8px;
-    gap: 8px;
-    height: 34px;
+    right: 18px;
+    gap: 0;
+    height: 26px;
   }
 
   .mobile-menu-btn {
-    width: 32px;
-    height: 32px;
+    width: 26px;
+    height: 16px;
   }
 
   .mobile-menu-btn span {
-    width: 22px;
+    width: 20px;
   }
 
   .mobile-menu-btn span:first-child {
-    top: 10px;
+    top: 3px;
   }
 
   .mobile-menu-btn span:last-child {
-    top: 18px;
+    bottom: 3px;
   }
 
   .toggle-track {
@@ -477,19 +485,4 @@
     font-size: 0.95rem;
     padding: 13px 14px;
   }
-}
-
-.mobile-close-btn {
-  border: none;
-  background: transparent;
-  color: var(--text-color);
-  font-size: 2rem;
-  line-height: 1;
-  cursor: pointer;
-  padding: 0;
-  width: 32px;
-  height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }

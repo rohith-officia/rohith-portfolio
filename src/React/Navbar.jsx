@@ -128,6 +128,15 @@ export default function Navbar() {
             <div
               className="mobile-menu-btn"
               onClick={() => setMenuOpen((prev) => !prev)}
+              aria-label="Open menu"
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  setMenuOpen((prev) => !prev);
+                }
+              }}
             >
               <span></span>
               <span></span>
@@ -156,6 +165,13 @@ export default function Navbar() {
       <div className={`mobile-menu-panel ${menuOpen ? "open" : ""}`}>
         <div className="mobile-menu-header">
           <span>Menu</span>
+          <button
+            type="button"
+            className="mobile-close-btn"
+            onClick={() => setMenuOpen(false)}
+          >
+            
+          </button>
         </div>
 
         <div className="mobile-theme-row">
