@@ -29,7 +29,7 @@ export default function Navbar() {
   }, [theme]);
 
   const toggleTheme = () => {
-    setTheme((prev) => (prev === "light" ? "dark" : "light"));
+    setTheme(prev => (prev === "light" ? "dark" : "light"));
   };
 
   const handleClick = (index, id) => {
@@ -41,7 +41,7 @@ export default function Navbar() {
     const navbarHeight = navbar ? navbar.offsetHeight : 0;
 
     if (section) {
-      const y = section.offsetTop - navbarHeight - 8;
+      const y = section.offsetTop - navbarHeight - 10;
       window.scrollTo({ top: y, behavior: "smooth" });
     }
   };
@@ -58,7 +58,7 @@ export default function Navbar() {
     const handleScroll = () => {
       const navbar = document.querySelector(".nav-wrapper");
       const navbarHeight = navbar ? navbar.offsetHeight : 0;
-      const scrollPos = window.scrollY + navbarHeight + 20;
+      const scrollPos = window.scrollY + navbarHeight + 10;
 
       menuItems.forEach((item, index) => {
         const section = document.getElementById(item.id);
@@ -80,32 +80,17 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [menuItems]);
 
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth > 768) {
-        setMenuOpen(false);
-      }
-    };
-
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  useEffect(() => {
-    document.body.style.overflow = menuOpen && window.innerWidth <= 768 ? "hidden" : "";
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [menuOpen]);
-
   return (
     <>
       <nav className={`nav-wrapper ${hidden ? "hide" : ""}`}>
         <div className="nav-inner">
+
+          {/* LOGO */}
           <div className="nav-logo" onClick={() => handleClick(0, "hero")}>
             R Rohith
           </div>
 
+          {/* DESKTOP MENU */}
           <div className="nav-container desktop-menu">
             <ul className="nav-glass">
               {menuItems.map((item, index) => (
@@ -122,36 +107,54 @@ export default function Navbar() {
             </ul>
           </div>
 
+          {/* RIGHT SIDE */}
           <div className="nav-mobile-actions">
+
+            {/* HAMBURGER */}
             <div
               className={`mobile-menu-btn ${menuOpen ? "open" : ""}`}
-              onClick={() => setMenuOpen((prev) => !prev)}
+              onClick={() => setMenuOpen(prev => !prev)}
             >
               <span></span>
               <span></span>
             </div>
 
-            <button className="theme-toggle" onClick={toggleTheme} type="button">
+            {/* 🔥 DESKTOP ONLY TOGGLE */}
+            <button className="theme-toggle desktop-toggle" onClick={toggleTheme}>
               <div className={`toggle-track ${theme}`}>
                 <span className="toggle-circle">
                   {theme === "dark" ? "⏾" : "☀"}
                 </span>
               </div>
             </button>
+
           </div>
         </div>
       </nav>
 
+      {/* OVERLAY */}
       <div
         className={`mobile-menu-overlay ${menuOpen ? "show" : ""}`}
         onClick={() => setMenuOpen(false)}
-      ></div>
+      />
 
+      {/* MOBILE MENU */}
       <div className={`mobile-menu-panel ${menuOpen ? "open" : ""}`}>
+
         <div className="mobile-menu-header">
           <span>Menu</span>
-          <button type="button" onClick={() => setMenuOpen(false)}>
-            ✕
+          <button onClick={() => setMenuOpen(false)}>✕</button>
+        </div>
+
+        {/* 🔥 TOGGLE INSIDE MENU */}
+        <div className="mobile-theme-row">
+          <span>Theme</span>
+          <button className="theme-toggle" onClick={toggleTheme}>
+            <div className={`toggle-track ${theme}`}>
+              <span className="toggle-circle">
+                {theme === "dark" ? "⏾" : "☀"}
+              </span>
+            </div>
           </button>
         </div>
 
@@ -159,7 +162,6 @@ export default function Navbar() {
           {menuItems.map((item, index) => (
             <button
               key={item.id}
-              type="button"
               className={active === index ? "active" : ""}
               onClick={() => handleClick(index, item.id)}
             >
@@ -167,6 +169,7 @@ export default function Navbar() {
             </button>
           ))}
         </div>
+
       </div>
     </>
   );
