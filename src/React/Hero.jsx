@@ -116,6 +116,7 @@ export default function Hero() {
   const [roleIndex, setRoleIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
   const [showPopup, setShowPopup] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   const popupRef = useRef(null);
   const illustrationWrapRef = useRef(null);
@@ -142,6 +143,13 @@ export default function Hero() {
   const leftBlur = useTransform(smoothProgress, [0, 0.9], ["blur(0px)", "blur(1.8px)"]);
 
   useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth <= 768);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  useEffect(() => {
     if (charIndex < roles[roleIndex].length) {
       const timeout = setTimeout(() => {
         setText((prev) => prev + roles[roleIndex][charIndex]);
@@ -160,6 +168,8 @@ export default function Hero() {
   }, [charIndex, roleIndex, roles]);
 
   useEffect(() => {
+    if (isMobile) return;
+
     const glow = document.querySelector(".cursor-glow");
 
     const move = (e) => {
@@ -178,7 +188,7 @@ export default function Hero() {
 
     window.addEventListener("mousemove", move);
     return () => window.removeEventListener("mousemove", move);
-  }, []);
+  }, [isMobile]);
 
   useEffect(() => {
     const handleClickOutside = (e) => {
@@ -202,19 +212,31 @@ export default function Hero() {
 
   const smooth = { type: "spring", stiffness: 70, damping: 18 };
 
+  const cardMotionStyle = isMobile
+    ? { opacity: 1 }
+    : { y: cardY, opacity: cardOpacity };
+
+  const leftMotionStyle = isMobile
+    ? {}
+    : { y: leftY, filter: leftBlur };
+
+  const rightMotionStyle = isMobile
+    ? {}
+    : { y: rightY, scale: rightScale, opacity: rightOpacity };
+
   return (
     <section id="hero" className="hero" ref={sectionRef}>
-      <div className="cursor-glow" />
+      {!isMobile && <div className="cursor-glow" />}
       <div className="particles" />
 
       <motion.div
         className="hero-card"
-        style={{ y: cardY, opacity: cardOpacity }}
+        style={cardMotionStyle}
       >
         <div className="hero-main">
           <motion.div
             className="hero-left"
-            style={{ y: leftY, filter: leftBlur }}
+            style={leftMotionStyle}
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, amount: 0.35 }}
@@ -288,7 +310,7 @@ export default function Hero() {
                 Download Resume
               </a>
 
-              <button className="btn talk-btn" onClick={() => setShowPopup(true)}>
+              <button type="button" className="btn talk-btn" onClick={() => setShowPopup(true)}>
                 Let&apos;s Talk ↗
               </button>
             </motion.div>
@@ -297,10 +319,11 @@ export default function Hero() {
           <motion.div
             className="hero-right"
             ref={illustrationWrapRef}
-            style={{ y: rightY, scale: rightScale, opacity: rightOpacity }}
-            initial={{ opacity: 0, x: 30, scale: 0.97, filter: "blur(10px)" }}
-            whileInView={{ opacity: 1, x: 0, scale: 1, filter: "blur(0px)" }}
-            viewport={{ once: true, amount: 0.35 }}
+            style={rightMotionStyle}
+            initial={isMobile ? false : { opacity: 0, x: 30, scale: 0.97, filter: "blur(10px)" }}
+            animate={isMobile ? { opacity: 1, x: 0, scale: 1, filter: "blur(0px)" } : undefined}
+            whileInView={!isMobile ? { opacity: 1, x: 0, scale: 1, filter: "blur(0px)" } : undefined}
+            viewport={{ once: true, amount: 0.2 }}
             transition={smooth}
           >
             <div className="hero-illustration">
