@@ -4,15 +4,11 @@ import "./css/navbar.css";
 export default function Navbar() {
   const [active, setActive] = useState(0);
   const [hidden, setHidden] = useState(false);
-  const [lastScroll, setLastScroll] = useState(0);
-
-  // default light
-  const [theme, setTheme] = useState(
-    localStorage.getItem("theme") || "light"
-  );
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
 
   const indicatorRef = useRef(null);
   const itemsRef = useRef([]);
+  const lastScrollRef = useRef(0);
 
   const menuItems = useMemo(
     () => [
@@ -26,14 +22,13 @@ export default function Navbar() {
     []
   );
 
-  // apply theme
   useEffect(() => {
     document.body.className = theme;
     localStorage.setItem("theme", theme);
   }, [theme]);
 
   const toggleTheme = () => {
-    setTheme(prev => (prev === "light" ? "dark" : "light"));
+    setTheme((prev) => (prev === "light" ? "dark" : "light"));
   };
 
   const handleClick = (index, id) => {
@@ -48,7 +43,6 @@ export default function Navbar() {
     }
   };
 
-  // indicator
   useEffect(() => {
     const el = itemsRef.current[active];
     if (el && indicatorRef.current) {
@@ -57,7 +51,6 @@ export default function Navbar() {
     }
   }, [active]);
 
-  // scroll behavior
   useEffect(() => {
     const handleScroll = () => {
       const navbar = document.querySelector(".nav-wrapper");
@@ -76,22 +69,20 @@ export default function Navbar() {
       });
 
       const currentScroll = window.scrollY;
-      setHidden(currentScroll > lastScroll && currentScroll > 100);
-      setLastScroll(currentScroll);
+      setHidden(currentScroll > lastScrollRef.current && currentScroll > 100);
+      lastScrollRef.current = currentScroll;
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [lastScroll, menuItems]);
+  }, [menuItems]);
 
   return (
     <nav className={`nav-wrapper ${hidden ? "hide" : ""}`}>
-      {/* LOGO */}
       <div className="nav-logo" onClick={() => handleClick(0, "hero")}>
         R Rohith
       </div>
 
-      {/* MENU */}
       <div className="nav-container">
         <ul className="nav-glass">
           {menuItems.map((item, index) => (
@@ -108,12 +99,13 @@ export default function Navbar() {
         </ul>
       </div>
 
-      {/* 🌗 GLASS TOGGLE */}
       <button className="theme-toggle" onClick={toggleTheme}>
-      <span className={`toggle-circle ${theme}`}>
-        {theme === "dark" ? "⏾" : "☀"}
-      </span>
-    </button>
+        <div className={`toggle-track ${theme}`}>
+          <span className="toggle-circle">
+            {theme === "dark" ? "⏾" : "☀"}
+          </span>
+        </div>
+      </button>
     </nav>
   );
 }
