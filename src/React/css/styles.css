@@ -165,3 +165,20 @@ body {
     font-size: 0.92rem;
   }
 }
+
+.page-content {
+  padding-top: 110px;
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .page-content {
+    padding-top: 85px;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-content {
+    padding-top: 72px;
+  }
+}
