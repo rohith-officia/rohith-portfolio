@@ -454,28 +454,36 @@
 /* 🔥 FINAL MOBILE FIX */
 @media (max-width: 768px) {
 
-  /* FIX SIDE GAP ISSUE */
   .hero {
-    padding: 82px 6px 16px !important;
+    padding: 82px 0 16px !important; /* ❌ removed side padding */
   }
 
   .hero-card {
-    width: calc(100% - 4px) !important;
-    max-width: calc(100% - 4px) !important;
-    margin: 0 auto !important;
-    padding: 18px 10px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+
+    padding: 18px 12px !important; /* ✅ controlled padding */
     box-sizing: border-box !important;
   }
 
-  /* FORCE PERFECT CENTER */
-  .hero-left,
-  .hero-right {
-    margin: 0 auto !important;
+  .hero-main {
+    grid-template-columns: 1fr !important;
     width: 100% !important;
-    max-width: 100% !important;
   }
 
-  /* FIX IMAGE ALIGNMENT */
+  .hero-left,
+  .hero-right {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
+    padding-left: 0 !important;
+  }
+
+  .hero-left {
+    text-align: center !important;
+  }
+
   .hero-illustration {
     width: 100% !important;
     max-width: 300px !important;
@@ -483,7 +491,6 @@
     transform: none !important;
   }
 
-  /* FIX BUTTON WIDTH */
   .hero-buttons {
     width: 100% !important;
   }
@@ -505,6 +512,24 @@
     width: calc(100% - 2px) !important;
     max-width: calc(100% - 2px) !important;
     padding: 16px 8px !important;
+  }
+
+  .hero-illustration {
+    max-width: 260px !important;
+  }
+}
+
+/* ============================= */
+/* 🔥 SMALL MOBILE FIX */
+@media (max-width: 480px) {
+
+  .hero {
+    padding: 75px 0 14px !important;
+  }
+
+  .hero-card {
+    width: 100% !important;
+    padding: 16px 10px !important;
   }
 
   .hero-illustration {
