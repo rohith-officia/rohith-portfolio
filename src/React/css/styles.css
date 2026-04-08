@@ -1,22 +1,18 @@
 /* ============================= */
 /* 🌍 GLOBAL THEME VARIABLES */
 :root {
-  /* LIGHT MODE */
   --bg-color: #ffffff;
   --text-color: #111;
   --subtext-color: #555;
-
   --section-bg: #ffffff;
   --border-color: rgba(0, 0, 0, 0.08);
   --shadow: 0 10px 30px rgba(0,0,0,0.08);
 }
 
 .dark {
-  /* DARK MODE */
   --bg-color: #000000;
   --text-color: #ffffff;
   --subtext-color: #aaa;
-
   --section-bg: #0a0a0a;
   --border-color: rgba(255,255,255,0.1);
   --shadow: 0 20px 60px rgba(0,0,0,0.6);
@@ -32,17 +28,18 @@ body {
   overflow-x: hidden;
 }
 
-/* Smooth theme transition */
 * {
   transition: background 0.3s ease, color 0.3s ease, border 0.3s ease;
 }
 
 /* ============================= */
-/* 📜 SCROLL SNAP */
+/* PAGE TOP SPACE FOR FIXED NAV */
 .scroll-container {
   scroll-snap-type: y mandatory;
   overflow-y: scroll;
   height: 100vh;
+  padding-top: 90px;
+  box-sizing: border-box;
 }
 
 .scroll-container section {
@@ -50,7 +47,7 @@ body {
 }
 
 /* ============================= */
-/* 🧠 HERO TEXT */
+/* HERO TEXT */
 .hero h1 {
   font-size: 4rem;
   color: var(--text-color);
@@ -62,7 +59,7 @@ body {
 }
 
 /* ============================= */
-/* 💎 GLASS SECTIONS */
+/* GLASS SECTIONS */
 .hero,
 .about,
 .services,
@@ -72,14 +69,13 @@ body {
   border-radius: 20px;
   margin: 20px;
   padding: 40px;
-
   background: var(--section-bg);
   border: 1px solid var(--border-color);
   box-shadow: var(--shadow);
 }
 
 /* ============================= */
-/* 💻 TABLET */
+/* TABLET */
 @media (max-width: 1024px) {
   .hero,
   .about,
@@ -104,12 +100,20 @@ body {
     scroll-snap-type: none;
     overflow-y: auto;
     height: auto;
+    padding-top: 88px;
   }
 }
 
 /* ============================= */
-/* 📱 MOBILE */
+/* MOBILE */
 @media (max-width: 768px) {
+  .scroll-container {
+    scroll-snap-type: none;
+    overflow-y: auto;
+    height: auto;
+    padding-top: 82px;
+  }
+
   .hero,
   .about,
   .services,
@@ -131,17 +135,15 @@ body {
     font-size: 0.95rem;
     line-height: 1.6;
   }
-
-  .scroll-container {
-    scroll-snap-type: none;
-    overflow-y: auto;
-    height: auto;
-  }
 }
 
 /* ============================= */
-/* 📱 SMALL MOBILE */
+/* SMALL MOBILE */
 @media (max-width: 480px) {
+  .scroll-container {
+    padding-top: 76px;
+  }
+
   .hero,
   .about,
   .services,
