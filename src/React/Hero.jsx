@@ -155,6 +155,7 @@ export default function Hero() {
         setText((prev) => prev + roles[roleIndex][charIndex]);
         setCharIndex((prev) => prev + 1);
       }, 55);
+
       return () => clearTimeout(timeout);
     }
 
@@ -229,10 +230,7 @@ export default function Hero() {
       {!isMobile && <div className="cursor-glow" />}
       <div className="particles" />
 
-      <motion.div
-        className="hero-card"
-        style={cardMotionStyle}
-      >
+      <motion.div className="hero-card" style={cardMotionStyle}>
         <div className="hero-main">
           <motion.div
             className="hero-left"
@@ -242,7 +240,12 @@ export default function Hero() {
             viewport={{ once: true, amount: 0.35 }}
             variants={{
               hidden: {},
-              show: { transition: { staggerChildren: 0.14, delayChildren: 0.15 } },
+              show: {
+                transition: {
+                  staggerChildren: 0.14,
+                  delayChildren: 0.15,
+                },
+              },
             }}
           >
             <motion.div
@@ -310,7 +313,11 @@ export default function Hero() {
                 Download Resume
               </a>
 
-              <button type="button" className="btn talk-btn" onClick={() => setShowPopup(true)}>
+              <button
+                type="button"
+                className="btn talk-btn"
+                onClick={() => setShowPopup(true)}
+              >
                 Let&apos;s Talk ↗
               </button>
             </motion.div>
@@ -320,9 +327,21 @@ export default function Hero() {
             className="hero-right"
             ref={illustrationWrapRef}
             style={rightMotionStyle}
-            initial={isMobile ? false : { opacity: 0, x: 30, scale: 0.97, filter: "blur(10px)" }}
-            animate={isMobile ? { opacity: 1, x: 0, scale: 1, filter: "blur(0px)" } : undefined}
-            whileInView={!isMobile ? { opacity: 1, x: 0, scale: 1, filter: "blur(0px)" } : undefined}
+            initial={
+              isMobile
+                ? { opacity: 1, x: 0, scale: 1, filter: "blur(0px)" }
+                : { opacity: 0, x: 30, scale: 0.97, filter: "blur(10px)" }
+            }
+            animate={
+              isMobile
+                ? { opacity: 1, x: 0, scale: 1, filter: "blur(0px)" }
+                : undefined
+            }
+            whileInView={
+              !isMobile
+                ? { opacity: 1, x: 0, scale: 1, filter: "blur(0px)" }
+                : undefined
+            }
             viewport={{ once: true, amount: 0.2 }}
             transition={smooth}
           >
