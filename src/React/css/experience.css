@@ -6,6 +6,7 @@
   color: var(--text-color);
   padding: 120px 20px;
   font-family: 'Inter', sans-serif;
+  box-sizing: border-box;
 }
 
 /* ============================= */
@@ -23,6 +24,7 @@
   position: relative;
   max-width: 900px;
   margin: auto;
+  box-sizing: border-box;
 }
 
 /* Base line */
@@ -109,6 +111,7 @@
   width: 40%;
   padding: 20px;
   border-radius: 16px;
+  box-sizing: border-box;
 
   background: rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(20px);
@@ -195,36 +198,42 @@
 /* ============================= */
 /* 📱 MOBILE */
 @media (max-width: 768px) {
+  .experience {
+    padding: 100px 12px 60px;
+  }
 
   /* 🔥 Move line to left */
   .timeline::before,
   .timeline-progress {
-    left: 10px;
+    left: 12px;
   }
 
   .node {
-    left: 10px;
+    left: 12px;
   }
 
   /* 🔥 Stack layout */
   .timeline-row {
     flex-direction: column;
     align-items: flex-start;
-    margin-bottom: 60px;
+    margin-bottom: 50px;
+    width: 100%;
   }
 
-  /* 🔥 Full width card */
+  /* 🔥 Full width card without overflow */
   .exp-card {
-    width: 100%;
-    margin-left: 30px;
+    width: calc(100% - 28px);
+    margin-left: 28px !important;
+    margin-right: 0 !important;
+    padding: 18px;
   }
 
   /* 🔥 Year label fix */
   .year-label {
     position: relative;
-    width: 100%;
+    width: calc(100% - 28px);
     text-align: left !important;
-    margin-left: 30px;
+    margin-left: 28px;
     margin-bottom: 8px;
   }
 
@@ -241,17 +250,34 @@
 /* ============================= */
 /* 📱 SMALL MOBILE */
 @media (max-width: 480px) {
+  .experience {
+    padding: 90px 10px 50px;
+  }
+
   .exp-title {
     font-size: 2rem;
     margin-bottom: 50px;
   }
 
+  .timeline::before,
+  .timeline-progress {
+    left: 10px;
+  }
+
+  .node {
+    left: 10px;
+  }
+
   .exp-card {
+    width: calc(100% - 24px);
+    margin-left: 24px !important;
     padding: 16px;
     border-radius: 14px;
   }
 
   .year-label {
+    width: calc(100% - 24px);
+    margin-left: 24px;
     font-size: 0.8rem;
   }
 }
