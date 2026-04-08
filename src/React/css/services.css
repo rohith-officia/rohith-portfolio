@@ -22,15 +22,11 @@
 /* 🔥 GRID (FIXED LAST CARD ISSUE) */
 .services-grid {
   display: grid;
-
-  /* 🔥 Key Fix */
   grid-template-columns: repeat(auto-fit, minmax(240px, 280px));
   justify-content: center;
-
   gap: 28px;
   max-width: 1000px;
   margin: auto;
-
   perspective: 1200px;
 }
 
@@ -46,7 +42,7 @@
   backdrop-filter: blur(25px);
   border: 1px solid rgba(255, 255, 255, 0.12);
 
-  box-shadow: 
+  box-shadow:
     0 10px 30px rgba(0, 0, 0, 0.25),
     inset 0 1px 1px rgba(255, 255, 255, 0.05);
 
@@ -104,10 +100,8 @@
 /* 🔥 HOVER */
 .service-card:hover {
   transform: translateY(-8px) scale(1.02);
-
   background: rgba(255, 255, 255, 0.1);
-
-  box-shadow: 
+  box-shadow:
     0 20px 50px rgba(0,0,0,0.4),
     0 0 20px rgba(255,255,255,0.05);
 }
@@ -152,17 +146,108 @@
 }
 
 /* ============================= */
-/* 📱 RESPONSIVE */
+/* 💻 TABLET */
+@media (max-width: 1024px) {
+  .services {
+    padding: 100px 30px 70px;
+  }
+
+  .services-title {
+    font-size: 2.2rem;
+    margin-bottom: 55px;
+  }
+
+  .services-grid {
+    gap: 22px;
+    max-width: 900px;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 260px));
+  }
+
+  .service-card {
+    padding: 24px 18px;
+  }
+}
+
+/* ============================= */
+/* 📱 MOBILE */
 @media (max-width: 768px) {
   .services {
-    padding: 100px 20px 60px;
+    min-height: auto;
+    padding: 80px 20px 60px;
   }
 
   .services-title {
     font-size: 2rem;
+    margin-bottom: 40px;
   }
 
   .services-grid {
     grid-template-columns: 1fr;
+    gap: 16px;
+    max-width: 100%;
+  }
+
+  .service-card {
+    padding: 20px 16px;
+    border-radius: 18px;
+  }
+
+  .service-card:hover {
+    transform: translateY(-4px);
+  }
+
+  .service-icon {
+    width: 42px;
+    height: 42px;
+    margin-bottom: 14px;
+  }
+
+  .service-card h3 {
+    font-size: 1.05rem;
+  }
+
+  .service-card p {
+    font-size: 0.86rem;
+    line-height: 1.55;
+  }
+
+  .glow {
+    display: none;
+  }
+}
+
+/* ============================= */
+/* 📱 SMALL MOBILE */
+@media (max-width: 480px) {
+  .services {
+    padding: 70px 14px 50px;
+  }
+
+  .services-title {
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+  }
+
+  .services-grid {
+    gap: 14px;
+  }
+
+  .service-card {
+    padding: 18px 14px;
+    border-radius: 16px;
+  }
+
+  .service-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+  }
+
+  .service-card h3 {
+    font-size: 0.98rem;
+  }
+
+  .service-card p {
+    font-size: 0.8rem;
   }
 }

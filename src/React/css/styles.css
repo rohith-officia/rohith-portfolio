@@ -29,6 +29,7 @@ body {
   background: var(--bg-color);
   color: var(--text-color);
   font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
 }
 
 /* Smooth theme transition */
@@ -75,4 +76,88 @@ body {
   background: var(--section-bg);
   border: 1px solid var(--border-color);
   box-shadow: var(--shadow);
+}
+
+/* ============================= */
+/* 💻 TABLET */
+@media (max-width: 1024px) {
+  .hero,
+  .about,
+  .services,
+  .experience,
+  .projects,
+  .proficiency {
+    margin: 14px;
+    padding: 28px;
+  }
+
+  .hero h1 {
+    font-size: 3rem;
+  }
+
+  .hero p {
+    max-width: 100%;
+    font-size: 0.98rem;
+  }
+
+  .scroll-container {
+    scroll-snap-type: none;
+    overflow-y: auto;
+    height: auto;
+  }
+}
+
+/* ============================= */
+/* 📱 MOBILE */
+@media (max-width: 768px) {
+  .hero,
+  .about,
+  .services,
+  .experience,
+  .projects,
+  .proficiency {
+    margin: 10px;
+    padding: 20px;
+    border-radius: 16px;
+  }
+
+  .hero h1 {
+    font-size: 2.2rem;
+    line-height: 1.1;
+  }
+
+  .hero p {
+    max-width: 100%;
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .scroll-container {
+    scroll-snap-type: none;
+    overflow-y: auto;
+    height: auto;
+  }
+}
+
+/* ============================= */
+/* 📱 SMALL MOBILE */
+@media (max-width: 480px) {
+  .hero,
+  .about,
+  .services,
+  .experience,
+  .projects,
+  .proficiency {
+    margin: 8px;
+    padding: 16px;
+    border-radius: 14px;
+  }
+
+  .hero h1 {
+    font-size: 1.9rem;
+  }
+
+  .hero p {
+    font-size: 0.92rem;
+  }
 }

@@ -186,3 +186,123 @@
     right: 20px;
   }
 }
+
+/* ============================= */
+/* 💻 TABLET */
+@media (max-width: 1024px) {
+  .nav-logo {
+    left: 20px;
+    font-size: 1.2rem;
+  }
+
+  .theme-toggle {
+    right: 20px;
+  }
+
+  .nav-glass {
+    width: 520px;
+    gap: 18px;
+    padding: 10px 18px;
+  }
+
+  .nav-glass li {
+    font-size: 0.85rem;
+    padding: 6px 6px;
+  }
+}
+
+/* ============================= */
+/* 📱 MOBILE */
+@media (max-width: 768px) {
+  .nav-wrapper {
+    top: 12px;
+  }
+
+  .nav-logo {
+    left: 14px;
+    font-size: 1rem;
+  }
+
+  .nav-glass {
+    width: calc(100% - 100px);
+    gap: 10px;
+    padding: 10px 14px;
+    border-radius: 22px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .nav-glass::-webkit-scrollbar {
+    display: none;
+  }
+
+  .nav-glass li {
+    font-size: 0.78rem;
+    padding: 6px 4px;
+    white-space: nowrap;
+    flex: 0 0 auto;
+  }
+
+  .theme-toggle {
+    right: 12px;
+  }
+
+  .toggle-track {
+    width: 56px;
+    height: 30px;
+    padding: 2px;
+  }
+
+  .toggle-circle {
+    width: 24px;
+    height: 24px;
+    font-size: 12px;
+  }
+
+  .toggle-track.dark .toggle-circle {
+    transform: translateX(26px);
+  }
+}
+
+/* ============================= */
+/* 📱 SMALL MOBILE */
+@media (max-width: 480px) {
+  .nav-wrapper {
+    top: 10px;
+  }
+
+  .nav-logo {
+    left: 10px;
+    font-size: 0.9rem;
+  }
+
+  .nav-glass {
+    width: calc(100% - 86px);
+    gap: 8px;
+    padding: 9px 12px;
+    border-radius: 18px;
+  }
+
+  .nav-glass li {
+    font-size: 0.72rem;
+  }
+
+  .theme-toggle {
+    right: 10px;
+  }
+
+  .toggle-track {
+    width: 52px;
+    height: 28px;
+  }
+
+  .toggle-circle {
+    width: 22px;
+    height: 22px;
+    font-size: 11px;
+  }
+
+  .toggle-track.dark .toggle-circle {
+    transform: translateX(24px);
+  }
+}

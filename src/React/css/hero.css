@@ -49,6 +49,7 @@
   min-height: 68vh;
   position: relative;
   z-index: 2;
+  width: 100%;
 }
 
 /* ============================= */
@@ -437,5 +438,99 @@
   .cursor-glow {
     width: 170px;
     height: 170px;
+  }
+}
+
+/* ============================= */
+/* 💻 TABLET IMPROVEMENT */
+@media (max-width: 1024px) {
+  .hero {
+    padding: 100px 18px 20px;
+  }
+
+  .hero-title {
+    font-size: clamp(2.8rem, 5vw, 3.5rem);
+  }
+
+  .hero-role {
+    font-size: 1.2rem;
+  }
+
+  .hero-desc {
+    font-size: 1rem;
+  }
+
+  .hero-stack {
+    font-size: 0.9rem;
+  }
+
+  .hero-card {
+    padding: 28px 24px;
+  }
+}
+
+/* ============================= */
+/* 📱 MOBILE IMPROVEMENT */
+@media (max-width: 768px) {
+  .hero-left,
+  .hero-right,
+  .hero-card {
+    will-change: auto;
+  }
+
+  .hero {
+    padding: 80px 14px 20px;
+  }
+
+  .hero-title {
+    font-size: 2.4rem;
+    letter-spacing: -0.04em;
+  }
+
+  .hero-role {
+    font-size: 1rem;
+  }
+
+  .hero-desc {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .hero-stack {
+    margin-top: 20px;
+  }
+
+  .btn {
+    min-height: 48px;
+    font-size: 0.95rem;
+  }
+
+  .cursor-glow {
+    display: none;
+  }
+}
+
+/* ============================= */
+/* 📱 SMALL MOBILE */
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .hero-role {
+    font-size: 0.95rem;
+  }
+
+  .hero-desc {
+    font-size: 0.9rem;
+  }
+
+  .hero-card {
+    padding: 18px 14px;
+    border-radius: 20px;
+  }
+
+  .hero-buttons {
+    gap: 10px;
   }
 }

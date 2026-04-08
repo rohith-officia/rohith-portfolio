@@ -38,14 +38,11 @@
   padding: 25px 20px;
   border-radius: 18px;
 
-  /* 🔥 stronger glass */
   background: rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(18px);
 
-  /* 🔥 clearer border */
   border: 1px solid rgba(255, 255, 255, 0.18);
 
-  /* 🔥 depth */
   box-shadow:
     0 10px 30px rgba(0, 0, 0, 0.35),
     inset 0 1px 1px rgba(255, 255, 255, 0.05);
@@ -65,6 +62,7 @@
   display: flex;
   justify-content: space-between;
   margin-bottom: 8px;
+  gap: 12px;
 }
 
 .skill-name {
@@ -77,6 +75,7 @@
   font-size: 0.9rem;
   font-weight: 500;
   color: var(--text-color);
+  flex-shrink: 0;
 }
 
 /* ============================= */
@@ -92,8 +91,6 @@
 .skill-progress {
   height: 100%;
   border-radius: 10px;
-
-  /* adaptive gradient */
   background: linear-gradient(
     90deg,
     var(--text-color),
@@ -102,15 +99,49 @@
 }
 
 /* ============================= */
-/* 📱 RESPONSIVE */
+/* 💻 TABLET */
+@media (max-width: 1024px) {
+  .proficiency {
+    padding: 100px 20px 80px;
+  }
+
+  .prof-title {
+    font-size: 2.5rem;
+    margin-bottom: 60px;
+  }
+
+  .prof-grid {
+    gap: 25px;
+    max-width: 900px;
+  }
+
+  .prof-card {
+    padding: 22px 18px;
+  }
+}
+
+/* ============================= */
+/* 📱 MOBILE */
 @media (max-width: 768px) {
+  .proficiency {
+    min-height: auto;
+    padding: 80px 14px 60px;
+  }
+
   .prof-title {
     font-size: 2.2rem;
     margin-bottom: 50px;
+    letter-spacing: -0.5px;
+  }
+
+  .prof-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
   }
 
   .prof-card {
     padding: 20px 15px;
+    border-radius: 16px;
   }
 
   .skill-name {
@@ -119,5 +150,47 @@
 
   .skill-percent {
     font-size: 0.85rem;
+  }
+
+  .skill-bar {
+    height: 10px;
+  }
+}
+
+/* ============================= */
+/* 📱 SMALL MOBILE */
+@media (max-width: 480px) {
+  .proficiency {
+    padding: 70px 10px 50px;
+  }
+
+  .prof-title {
+    font-size: 1.9rem;
+    margin-bottom: 35px;
+  }
+
+  .prof-grid {
+    gap: 14px;
+  }
+
+  .prof-card {
+    padding: 16px 12px;
+    border-radius: 14px;
+  }
+
+  .skill-header {
+    margin-bottom: 6px;
+  }
+
+  .skill-name {
+    font-size: 0.92rem;
+  }
+
+  .skill-percent {
+    font-size: 0.8rem;
+  }
+
+  .skill-bar {
+    height: 9px;
   }
 }
