@@ -2,47 +2,55 @@
 /* 🔥 CONTAINER */
 .services {
   min-height: 100vh;
-  background: linear-gradient(135deg, #f0f0f0, #e5e5e5); /* soft light gradient */
-  color: #111;
+  background: var(--bg-color);
+  color: var(--text-color);
   padding: 120px 60px 80px;
   font-family: 'Inter', sans-serif;
 }
 
 /* ============================= */
-/* 🔥 TITLE */
+/* 🧠 TITLE */
 .services-title {
   font-size: 2.4rem;
   text-align: center;
   margin-bottom: 70px;
   font-weight: 600;
-  color: #111;
+  color: var(--text-color);
 }
 
 /* ============================= */
-/* 🔥 GRID */
+/* 🔥 GRID (FIXED LAST CARD ISSUE) */
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+
+  /* 🔥 Key Fix */
+  grid-template-columns: repeat(auto-fit, minmax(240px, 280px));
+  justify-content: center;
+
   gap: 28px;
-  max-width: 950px;
+  max-width: 1000px;
   margin: auto;
+
   perspective: 1200px;
 }
 
 /* ============================= */
-/* 🔥 CARD (iPhone Glass) */
+/* 💎 CARD */
 .service-card {
   position: relative;
   padding: 28px 22px;
   border-radius: 20px;
+  overflow: hidden;
 
-  background: rgba(255, 255, 255, 0.25); /* frosted glass */
+  background: rgba(255, 255, 255, 0.06);
   backdrop-filter: blur(25px);
-  border: 1px solid rgba(255, 255, 255, 0.3); /* subtle border */
+  border: 1px solid rgba(255, 255, 255, 0.12);
 
-  box-shadow: 0 8px 30px rgba(0,0,0,0.05);
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.25),
+    inset 0 1px 1px rgba(255, 255, 255, 0.05);
 
-  transition: transform 0.25s ease, box-shadow 0.3s ease, background 0.3s ease;
+  transition: all 0.3s ease;
   transform-style: preserve-3d;
 }
 
@@ -58,7 +66,7 @@
   background: linear-gradient(
     120deg,
     transparent,
-    rgba(255,255,255,0.35),
+    rgba(255,255,255,0.4),
     transparent
   );
 
@@ -72,7 +80,7 @@
 }
 
 .service-card:hover::before {
-  opacity: 1;
+  opacity: 0.2;
 }
 
 /* ============================= */
@@ -81,7 +89,7 @@
   position: absolute;
   width: 180px;
   height: 180px;
-  background: radial-gradient(circle, rgba(255,255,255,0.15), transparent 70%);
+  background: radial-gradient(circle, white, transparent 70%);
   transform: translate(-50%, -50%);
   pointer-events: none;
   opacity: 0;
@@ -89,17 +97,19 @@
 }
 
 .service-card:hover .glow {
-  opacity: 1;
+  opacity: 0.06;
 }
 
 /* ============================= */
 /* 🔥 HOVER */
 .service-card:hover {
-  transform: translateY(-5px);
-  box-shadow:
-    0 20px 50px rgba(0,0,0,0.1),
-    0 0 25px rgba(255,255,255,0.08);
-  background: rgba(255,255,255,0.35);
+  transform: translateY(-8px) scale(1.02);
+
+  background: rgba(255, 255, 255, 0.1);
+
+  box-shadow: 
+    0 20px 50px rgba(0,0,0,0.4),
+    0 0 20px rgba(255,255,255,0.05);
 }
 
 /* ============================= */
@@ -115,15 +125,15 @@
 
   margin-bottom: 16px;
 
-  background: rgba(255,255,255,0.3);
-  border: 1px solid rgba(255,255,255,0.35);
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.12);
 
   transition: 0.3s;
 }
 
 .service-card:hover .service-icon {
-  transform: translateY(-3px) scale(1.07);
-  background: rgba(255,255,255,0.45);
+  transform: translateY(-4px) scale(1.08);
+  background: rgba(255,255,255,0.12);
 }
 
 /* ============================= */
@@ -132,12 +142,12 @@
   font-size: 1.15rem;
   margin-bottom: 6px;
   font-weight: 600;
-  color: #111;
+  color: var(--text-color);
 }
 
 .service-card p {
   font-size: 0.9rem;
-  color: #333;
+  color: var(--subtext-color);
   line-height: 1.5;
 }
 
@@ -150,5 +160,9 @@
 
   .services-title {
     font-size: 2rem;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
   }
 }

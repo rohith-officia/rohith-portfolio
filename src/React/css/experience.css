@@ -2,20 +2,23 @@
 /* 🔥 EXPERIENCE SECTION */
 .experience {
   min-height: 100vh;
-  background: #000;
-  color: #fff;
+  background: var(--bg-color);
+  color: var(--text-color);
   padding: 120px 20px;
   font-family: 'Inter', sans-serif;
 }
 
-/* Title */
+/* ============================= */
+/* 🧠 TITLE */
 .exp-title {
   text-align: center;
   font-size: 3rem;
   margin-bottom: 80px;
+  color: var(--text-color);
 }
 
-/* Timeline */
+/* ============================= */
+/* 📍 TIMELINE */
 .timeline {
   position: relative;
   max-width: 900px;
@@ -29,7 +32,7 @@
   left: 50%;
   width: 2px;
   height: 100%;
-  background: rgba(255,255,255,0.1);
+  background: var(--glass-border);
   transform: translateX(-50%);
 }
 
@@ -38,12 +41,13 @@
   position: absolute;
   left: 50%;
   width: 3px;
-  background: linear-gradient(to bottom, #fff, transparent);
+  background: linear-gradient(to bottom, var(--text-color), transparent);
   transform: translateX(-50%);
-  box-shadow: 0 0 15px rgba(255,255,255,0.8);
+  box-shadow: 0 0 12px var(--text-color);
 }
 
-/* Row */
+/* ============================= */
+/* 📦 ROW */
 .timeline-row {
   position: relative;
   display: flex;
@@ -51,33 +55,30 @@
   margin-bottom: 100px;
 }
 
-/* LEFT */
 .timeline-row.left {
   justify-content: flex-start;
 }
 
-/* RIGHT */
 .timeline-row.right {
   justify-content: flex-end;
 }
 
-/* YEAR */
+/* ============================= */
+/* 🗓 YEAR */
 .year-label {
   position: absolute;
   width: 40%;
   font-size: 0.9rem;
-  color: #aaa;
+  color: var(--subtext-color);
   letter-spacing: 1px;
   transition: 0.3s;
 }
 
-/* Left row → year right side */
 .timeline-row.left .year-label {
   right: 0;
   text-align: left;
 }
 
-/* Right row → year left side */
 .timeline-row.right .year-label {
   left: 0;
   text-align: right;
@@ -85,11 +86,12 @@
 
 /* Hover glow */
 .timeline-row:hover .year-label {
-  color: #fff;
-  text-shadow: 0 0 10px rgba(255,255,255,0.6);
+  color: var(--text-color);
+  text-shadow: 0 0 10px var(--text-color);
 }
 
-/* Node */
+/* ============================= */
+/* 🔘 NODE */
 .node {
   position: absolute;
   left: 50%;
@@ -97,39 +99,48 @@
   width: 14px;
   height: 14px;
   border-radius: 50%;
-  background: #fff;
-  box-shadow: 0 0 10px #fff;
+  background: var(--text-color);
+  box-shadow: 0 0 10px var(--text-color);
 }
 
-/* Card */
+/* ============================= */
+/* 💎 CARD */
 .exp-card {
   width: 40%;
   padding: 20px;
   border-radius: 16px;
-  background: rgba(255,255,255,0.05);
+
+  /* 🔥 Stronger glass */
+  background: rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(20px);
-  border: 1px solid rgba(255,255,255,0.1);
-  transition: 0.3s;
+
+  /* 🔥 Better border visibility */
+  border: 1px solid rgba(255, 255, 255, 0.18);
+
+  /* 🔥 Depth */
+  box-shadow: 
+    0 8px 25px rgba(0, 0, 0, 0.35),
+    inset 0 1px 1px rgba(255, 255, 255, 0.06);
+
+  transition: all 0.3s ease;
 }
 
 .exp-card:hover {
   transform: translateY(-8px);
-  border-color: rgba(255,255,255,0.3);
+  border-color: var(--text-color);
 }
 
-/* Left card */
+/* LEFT / RIGHT */
 .timeline-row.left .exp-card {
   margin-right: auto;
-  text-align: inherit;
 }
 
-/* Right card */
 .timeline-row.right .exp-card {
   margin-left: auto;
 }
 
 /* ============================= */
-/* 🔥 ENTRY ANIMATION */
+/* 🎬 ENTRY ANIMATION */
 @keyframes slideInLeft {
   0% { opacity: 0; transform: translateX(-50px); }
   100% { opacity: 1; transform: translateX(0); }
@@ -153,7 +164,7 @@
   opacity: 0;
 }
 
-/* Stagger rows for nicer effect */
+/* Stagger */
 .timeline-row:nth-child(odd) .exp-card,
 .timeline-row:nth-child(odd) .year-label {
   animation-delay: 0.2s;
@@ -165,7 +176,7 @@
 }
 
 /* ============================= */
-/* 🔥 RESPONSIVE */
+/* 📱 RESPONSIVE */
 @media (max-width: 768px) {
   .timeline::before,
   .timeline-progress {
@@ -184,7 +195,6 @@
   .exp-card {
     width: 100%;
     margin-left: 30px;
-    text-align: left !important;
   }
 
   .year-label {

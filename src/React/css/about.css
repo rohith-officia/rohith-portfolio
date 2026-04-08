@@ -1,9 +1,13 @@
 /* ============================= */
-/* Global About Section */
+/* 🌍 ABOUT THEME VARIABLES (optional override if needed) */
+/* Uses global variables from your main CSS */
+
+/* ============================= */
+/* 🔥 GLOBAL ABOUT SECTION */
 .about {
   min-height: 100vh;
-  background: #f5f5f5; /* light gray background for page */
-  color: #000;
+  background: var(--bg-color);
+  color: var(--text-color);
 
   display: flex;
   justify-content: center;
@@ -12,7 +16,8 @@
   font-family: 'Inter', sans-serif;
 }
 
-/* Layout */
+/* ============================= */
+/* 📦 LAYOUT */
 .about-wrapper {
   display: flex;
   gap: 60px;
@@ -25,30 +30,33 @@
   flex: 1;
 }
 
-/* Title */
+/* ============================= */
+/* 🧠 TITLE */
 .about-title {
   font-size: 3rem;
   margin-bottom: 20px;
-  color: #111;
+  color: var(--text-color);
 }
 
 .about-title span {
-  color: #555; /* gray accent */
+  color: var(--subtext-color);
 }
 
-/* Description */
+/* ============================= */
+/* 📝 DESCRIPTION */
 .about-description {
   font-size: 1.1rem;
   line-height: 1.8;
-  color: #333;
+  color: var(--subtext-color);
 }
 
 .about-description span {
-  color: #000;
+  color: var(--text-color);
   font-weight: 500;
 }
 
-/* Tech */
+/* ============================= */
+/* 🧩 TECH STACK */
 .about-tech {
   margin-top: 30px;
   display: flex;
@@ -59,42 +67,39 @@
 .about-tech span {
   padding: 6px 14px;
   border-radius: 20px;
-
   font-size: 0.85rem;
-  background: rgba(255,255,255,0.5); /* translucent white */
-  backdrop-filter: blur(10px); /* frosted glass */
-  border: 1px solid rgba(0,0,0,0.1); /* subtle border */
-  color: #000;
+
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  color: var(--text-color);
 
   transition: 0.3s;
 }
 
 .about-tech span:hover {
-  background: rgba(255,255,255,0.7);
-  border-color: rgba(0,0,0,0.2);
+  background: var(--glass-hover);
 }
 
-/* Stats */
+/* ============================= */
+/* 📊 STATS */
 .about-stats {
   display: flex;
   gap: 40px;
   margin-top: 40px;
 }
 
-.about-stats div {
-  text-align: center;
-}
-
 .about-stats h3 {
   font-size: 1.5rem;
-  color: #111;
+  color: var(--text-color);
 }
 
 .about-stats p {
   font-size: 0.9rem;
-  color: #555;
+  color: var(--subtext-color);
 }
 
+/* ============================= */
 /* RIGHT */
 .about-right {
   flex: 1;
@@ -103,69 +108,80 @@
   align-items: center;
 }
 
-/* Glass Card */
+/* ============================= */
+/* 💎 GLASS CARD */
 .about-card {
   width: 100%;
   max-width: 400px;
   padding: 25px;
-
   border-radius: 20px;
 
-  background: rgba(255,255,255,0.4); /* frosted glass */
-  backdrop-filter: blur(20px); /* blur for glass effect */
-  border: 1px solid rgba(0,0,0,0.1); /* subtle border */
-  box-shadow: 0 8px 30px rgba(0,0,0,0.05);
-  transition: 0.4s;
+  /* 🔥 Stronger glass visibility */
+  background: rgba(255, 255, 255, 0.08); /* slightly brighter */
+  backdrop-filter: blur(20px);
+
+  /* 🔥 More visible border */
+  border: 1px solid rgba(255, 255, 255, 0.18);
+
+  /* 🔥 Deeper shadow for separation */
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.4),
+    inset 0 1px 1px rgba(255, 255, 255, 0.08);
+
+  transition: all 0.4s ease;
 }
 
 .about-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 12px 40px rgba(0,0,0,0.08);
 }
 
-/* Title inside card */
+/* ============================= */
+/* 🧾 CARD TITLE */
 .card-title {
   margin-bottom: 20px;
-  color: #111;
+  color: var(--text-color);
 }
 
-/* Grid */
+/* ============================= */
+/* GRID */
 .what-i-do-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 15px;
 }
 
-/* Box */
+/* ============================= */
+/* 🧊 BOX */
 .what-box {
   padding: 15px;
   border-radius: 12px;
 
-  background: rgba(255,255,255,0.35);
+  background: var(--glass-bg);
   backdrop-filter: blur(15px);
-  border: 1px solid rgba(0,0,0,0.1);
+  border: 1px solid var(--glass-border);
+
   transition: 0.3s;
-  color: #111;
+  color: var(--text-color);
 }
 
 .what-box:hover {
-  background: rgba(255,255,255,0.55);
+  background: var(--glass-hover);
   transform: translateY(-5px);
-  border-color: rgba(0,0,0,0.2);
 }
 
 .what-box h4 {
   font-size: 0.95rem;
   margin-bottom: 6px;
-  color: #111;
+  color: var(--text-color);
 }
 
 .what-box p {
   font-size: 0.8rem;
-  color: #555;
+  color: var(--subtext-color);
 }
 
-/* Responsive */
+/* ============================= */
+/* 📱 RESPONSIVE */
 @media (max-width: 900px) {
   .about-wrapper {
     flex-direction: column;
