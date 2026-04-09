@@ -7,6 +7,9 @@
   --section-bg: #ffffff;
   --border-color: rgba(0, 0, 0, 0.08);
   --shadow: 0 10px 30px rgba(0,0,0,0.08);
+  --glass-bg: rgba(127, 127, 127, 0.08);
+  --glass-border: rgba(0, 0, 0, 0.08);
+  --glass-hover: rgba(127, 127, 127, 0.12);
 }
 
 .dark {
@@ -16,10 +19,17 @@
   --section-bg: #0a0a0a;
   --border-color: rgba(255,255,255,0.1);
   --shadow: 0 20px 60px rgba(0,0,0,0.6);
+  --glass-bg: rgba(255, 255, 255, 0.08);
+  --glass-border: rgba(255,255,255,0.12);
+  --glass-hover: rgba(255,255,255,0.12);
 }
 
 /* ============================= */
 /* 🌍 BODY */
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   background: var(--bg-color);
@@ -29,6 +39,7 @@ body {
 }
 
 * {
+  box-sizing: border-box;
   transition: background 0.3s ease, color 0.3s ease, border 0.3s ease;
 }
 
@@ -100,18 +111,18 @@ body {
     scroll-snap-type: none;
     overflow-y: auto;
     height: auto;
-    padding-top: 88px;
+    padding-top: 84px;
   }
 }
 
 /* ============================= */
-/* MOBILE (🔥 FIX APPLIED HERE) */
+/* MOBILE */
 @media (max-width: 768px) {
   .scroll-container {
     scroll-snap-type: none;
     overflow-y: auto;
     height: auto;
-    padding-top: 82px;
+    padding-top: 64px;
   }
 
   .hero,
@@ -120,18 +131,14 @@ body {
   .experience,
   .projects,
   .proficiency {
-    margin-left: 0;   /* ✅ FIX */
-    margin-right: 0;  /* ✅ FIX */
-    margin-top: 10px;
-    margin-bottom: 10px;
-
-    padding: 20px;
-    border-radius: 16px;
+    margin: 10px;
+    padding: 18px;
+    border-radius: 18px;
   }
 
   .hero h1 {
     font-size: 2.2rem;
-    line-height: 1.1;
+    line-height: 1.08;
   }
 
   .hero p {
@@ -142,10 +149,10 @@ body {
 }
 
 /* ============================= */
-/* SMALL MOBILE (🔥 FIX APPLIED HERE) */
+/* SMALL MOBILE */
 @media (max-width: 480px) {
   .scroll-container {
-    padding-top: 76px;
+    padding-top: 58px;
   }
 
   .hero,
@@ -154,17 +161,13 @@ body {
   .experience,
   .projects,
   .proficiency {
-    margin-left: 0;   /* ✅ FIX */
-    margin-right: 0;  /* ✅ FIX */
-    margin-top: 8px;
-    margin-bottom: 8px;
-
+    margin: 8px;
     padding: 16px;
-    border-radius: 14px;
+    border-radius: 16px;
   }
 
   .hero h1 {
-    font-size: 1.9rem;
+    font-size: 1.95rem;
   }
 
   .hero p {
