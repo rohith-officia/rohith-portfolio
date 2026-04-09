@@ -2,10 +2,12 @@
 /* 🔥 EXPERIENCE SECTION */
 .experience {
   min-height: 100vh;
-  padding: 120px 20px 80px;
   background: var(--bg-color);
   color: var(--text-color);
+  padding: 120px 20px 80px;
   font-family: 'Inter', sans-serif;
+  box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 /* ============================= */
@@ -14,17 +16,20 @@
   text-align: center;
   font-size: 3rem;
   margin-bottom: 80px;
+  color: var(--text-color);
+  letter-spacing: -0.03em;
 }
 
 /* ============================= */
 /* 📍 TIMELINE */
 .timeline {
   position: relative;
-  max-width: 700px;
+  max-width: 950px;
   margin: 0 auto;
+  box-sizing: border-box;
 }
 
-/* CENTER LINE */
+/* Base line */
 .timeline::before {
   content: "";
   position: absolute;
@@ -32,8 +37,26 @@
   top: 0;
   width: 2px;
   height: 100%;
-  background: var(--border-color);
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    var(--border-color),
+    var(--border-color),
+    transparent
+  );
   transform: translateX(-50%);
+}
+
+/* Animated progress line */
+.timeline-progress {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 3px;
+  transform: translateX(-50%);
+  background: linear-gradient(to bottom, var(--text-color), transparent);
+  box-shadow: 0 0 14px rgba(255, 255, 255, 0.15);
+  border-radius: 999px;
 }
 
 /* ============================= */
@@ -41,9 +64,47 @@
 .timeline-row {
   position: relative;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  margin-bottom: 70px;
+  margin-bottom: 90px;
+  width: 100%;
+}
+
+.timeline-row:last-child {
+  margin-bottom: 0;
+}
+
+.timeline-row.left {
+  justify-content: flex-start;
+}
+
+.timeline-row.right {
+  justify-content: flex-end;
+}
+
+/* ============================= */
+/* 🗓 YEAR */
+.year-label {
+  position: absolute;
+  width: 40%;
+  font-size: 0.9rem;
+  color: var(--subtext-color);
+  letter-spacing: 0.08em;
+  transition: all 0.3s ease;
+}
+
+.timeline-row.left .year-label {
+  right: 0;
+  text-align: left;
+}
+
+.timeline-row.right .year-label {
+  left: 0;
+  text-align: right;
+}
+
+.timeline-row:hover .year-label {
+  color: var(--text-color);
+  opacity: 1;
 }
 
 /* ============================= */
@@ -52,123 +113,268 @@
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  width: 12px;
-  height: 12px;
+  width: 16px;
+  height: 16px;
   border-radius: 50%;
   background: var(--text-color);
   border: 3px solid var(--bg-color);
+  box-shadow:
+    0 0 0 6px rgba(127, 127, 127, 0.08),
+    0 0 14px rgba(255, 255, 255, 0.16);
   z-index: 2;
 }
 
 /* ============================= */
 /* 💎 CARD */
 .exp-card {
-  width: 43%;
-  padding: 18px;
-  border-radius: 16px;
-  background: rgba(255,255,255,0.06);
-  backdrop-filter: blur(16px);
-  border: 1px solid rgba(255,255,255,0.12);
-  transition: 0.25s ease;
+  width: 40%;
+  padding: 22px 22px 20px;
+  border-radius: 20px;
+  box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.22),
+    inset 0 1px 1px rgba(255, 255, 255, 0.05);
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .exp-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-6px);
+  border-color: var(--text-color);
+  box-shadow:
+    0 14px 34px rgba(0, 0, 0, 0.28),
+    inset 0 1px 1px rgba(255, 255, 255, 0.06);
 }
 
-/* ============================= */
-/* 🗓 YEAR */
-.year-label {
-  width: 45%;
-  font-size: 0.85rem;
-  color: var(--subtext-color);
-}
-
-/* ============================= */
-/* LEFT ALIGN */
+/* LEFT / RIGHT */
 .timeline-row.left .exp-card {
-  order: 1;
+  margin-right: auto;
 }
 
-.timeline-row.left .year-label {
-  order: 2;
-  text-align: right;
-  padding-right: 20px;
-}
-
-/* ============================= */
-/* RIGHT ALIGN */
 .timeline-row.right .exp-card {
-  order: 2;
-}
-
-.timeline-row.right .year-label {
-  order: 1;
-  text-align: left;
-  padding-left: 20px;
+  margin-left: auto;
 }
 
 /* ============================= */
-/* TEXT */
+/* ✨ CARD CONTENT */
 .exp-card h3 {
-  font-size: 1.1rem;
-  margin-bottom: 6px;
+  margin: 0 0 8px;
+  font-size: 1.2rem;
+  color: var(--text-color);
+  line-height: 1.3;
+}
+
+.exp-card h4 {
+  margin: 0 0 10px;
+  font-size: 0.96rem;
+  font-weight: 500;
+  color: var(--subtext-color);
 }
 
 .exp-card p {
+  margin: 0;
   font-size: 0.95rem;
-  line-height: 1.6;
+  line-height: 1.7;
   color: var(--subtext-color);
 }
 
 /* ============================= */
-/* 📱 MOBILE FIX */
-@media (max-width: 768px) {
+/* 🎬 ENTRY ANIMATION */
+@keyframes slideInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
 
+@keyframes slideInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.timeline-row.left .exp-card,
+.timeline-row.left .year-label {
+  animation: slideInLeft 0.8s ease forwards;
+  opacity: 0;
+}
+
+.timeline-row.right .exp-card,
+.timeline-row.right .year-label {
+  animation: slideInRight 0.8s ease forwards;
+  opacity: 0;
+}
+
+.timeline-row:nth-child(odd) .exp-card,
+.timeline-row:nth-child(odd) .year-label {
+  animation-delay: 0.18s;
+}
+
+.timeline-row:nth-child(even) .exp-card,
+.timeline-row:nth-child(even) .year-label {
+  animation-delay: 0.34s;
+}
+
+/* ============================= */
+/* 💻 TABLET */
+@media (max-width: 1024px) {
   .experience {
-    padding: 90px 12px 50px;
+    padding: 110px 18px 70px;
+  }
+
+  .exp-title {
+    font-size: 2.5rem;
+    margin-bottom: 64px;
   }
 
   .timeline {
-    max-width: 100%;
+    max-width: 760px;
   }
 
-  /* 🔥 LINE */
-  .timeline::before {
-    left: 16px;
+  .exp-card {
+    width: 44%;
+    padding: 20px;
+  }
+
+  .year-label {
+    width: 44%;
+  }
+}
+
+/* ============================= */
+/* 📱 MOBILE */
+@media (max-width: 768px) {
+  .experience {
+    padding: 100px 12px 56px;
+  }
+
+  .exp-title {
+    font-size: 2.2rem;
+    margin-bottom: 46px;
+  }
+
+  .timeline {
+    width: 100%;
+  }
+
+  .timeline::before,
+  .timeline-progress {
+    left: 12px;
     transform: none;
   }
 
-  /* 🔥 NODE */
   .node {
-    left: 16px;
+    left: 12px;
     transform: translateX(-50%);
-    width: 12px;
-    height: 12px;
+    width: 14px;
+    height: 14px;
   }
 
-  /* 🔥 ROW */
   .timeline-row {
     flex-direction: column;
     align-items: flex-start;
-    margin-bottom: 35px;
+    margin-bottom: 42px;
+    padding-left: 0;
   }
 
-  /* 🔥 YEAR */
   .year-label {
-    width: auto;
-    margin-left: 36px;
-    margin-bottom: 6px;
-    font-size: 0.8rem;
+    position: relative;
+    width: calc(100% - 34px);
+    margin-left: 34px;
+    margin-bottom: 10px;
     text-align: left !important;
-    padding: 0;
+    font-size: 0.82rem;
+    letter-spacing: 0.06em;
   }
 
-  /* 🔥 CARD */
   .exp-card {
-    width: calc(100% - 36px);
-    margin-left: 36px;
-    padding: 16px;
+    width: calc(100% - 34px);
+    margin-left: 34px !important;
+    margin-right: 0 !important;
+    padding: 18px 16px;
+    border-radius: 16px;
+  }
+
+  .exp-card h3 {
+    font-size: 1.05rem;
+  }
+
+  .exp-card h4 {
+    font-size: 0.9rem;
+  }
+
+  .exp-card p {
+    font-size: 0.9rem;
+    line-height: 1.65;
+  }
+
+  .timeline-row.left .exp-card,
+  .timeline-row.right .exp-card,
+  .timeline-row.left .year-label,
+  .timeline-row.right .year-label {
+    animation: none;
+    opacity: 1;
+  }
+}
+
+/* ============================= */
+/* 📱 SMALL MOBILE */
+@media (max-width: 480px) {
+  .experience {
+    padding: 90px 10px 48px;
+  }
+
+  .exp-title {
+    font-size: 1.95rem;
+    margin-bottom: 38px;
+  }
+
+  .timeline::before,
+  .timeline-progress {
+    left: 10px;
+  }
+
+  .node {
+    left: 10px;
+    width: 13px;
+    height: 13px;
+  }
+
+  .year-label {
+    width: calc(100% - 28px);
+    margin-left: 28px;
+    font-size: 0.78rem;
+    margin-bottom: 8px;
+  }
+
+  .exp-card {
+    width: calc(100% - 28px);
+    margin-left: 28px !important;
+    padding: 16px 14px;
     border-radius: 14px;
+  }
+
+  .exp-card h3 {
+    font-size: 1rem;
+  }
+
+  .exp-card h4 {
+    font-size: 0.86rem;
+  }
+
+  .exp-card p {
+    font-size: 0.88rem;
   }
 }
