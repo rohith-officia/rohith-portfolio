@@ -7,9 +7,6 @@
   --section-bg: #ffffff;
   --border-color: rgba(0, 0, 0, 0.08);
   --shadow: 0 10px 30px rgba(0,0,0,0.08);
-  --glass-bg: rgba(127, 127, 127, 0.08);
-  --glass-border: rgba(0, 0, 0, 0.08);
-  --glass-hover: rgba(127, 127, 127, 0.12);
 }
 
 .dark {
@@ -19,17 +16,10 @@
   --section-bg: #0a0a0a;
   --border-color: rgba(255,255,255,0.1);
   --shadow: 0 20px 60px rgba(0,0,0,0.6);
-  --glass-bg: rgba(255, 255, 255, 0.08);
-  --glass-border: rgba(255,255,255,0.12);
-  --glass-hover: rgba(255,255,255,0.12);
 }
 
 /* ============================= */
 /* 🌍 BODY */
-html {
-  scroll-behavior: smooth;
-}
-
 body {
   margin: 0;
   background: var(--bg-color);
@@ -39,7 +29,6 @@ body {
 }
 
 * {
-  box-sizing: border-box;
   transition: background 0.3s ease, color 0.3s ease, border 0.3s ease;
 }
 
@@ -49,6 +38,7 @@ body {
   scroll-snap-type: y mandatory;
   overflow-y: scroll;
   height: 100vh;
+
   padding-top: 90px;
   box-sizing: border-box;
 }
@@ -111,7 +101,7 @@ body {
     scroll-snap-type: none;
     overflow-y: auto;
     height: auto;
-    padding-top: 84px;
+    padding-top: 88px;
   }
 }
 
@@ -122,7 +112,7 @@ body {
     scroll-snap-type: none;
     overflow-y: auto;
     height: auto;
-    padding-top: 64px;
+    padding-top: 82px;
   }
 
   .hero,
@@ -131,14 +121,15 @@ body {
   .experience,
   .projects,
   .proficiency {
-    margin: 10px;
-    padding: 18px;
-    border-radius: 18px;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 20px;
+    border-radius: 16px;
   }
 
   .hero h1 {
     font-size: 2.2rem;
-    line-height: 1.08;
+    line-height: 1.1;
   }
 
   .hero p {
@@ -152,7 +143,7 @@ body {
 /* SMALL MOBILE */
 @media (max-width: 480px) {
   .scroll-container {
-    padding-top: 58px;
+    padding-top: 76px;
   }
 
   .hero,
@@ -161,16 +152,34 @@ body {
   .experience,
   .projects,
   .proficiency {
-    margin: 8px;
+    margin-left: 0;
+    margin-right: 0;
     padding: 16px;
-    border-radius: 16px;
+    border-radius: 14px;
   }
 
   .hero h1 {
-    font-size: 1.95rem;
+    font-size: 1.9rem;
   }
 
   .hero p {
     font-size: 0.92rem;
+  }
+}
+
+.page-content {
+  padding-top: 110px;
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .page-content {
+    padding-top: 82px;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-content {
+    padding-top: 72px;
   }
 }
