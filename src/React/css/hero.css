@@ -536,3 +536,27 @@
     max-width: 260px !important;
   }
 }
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 82px 14px 18px !important;
+  }
+
+  .hero-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
+    padding: 18px 14px 22px !important;
+    box-sizing: border-box !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding: 78px 12px 14px !important;
+  }
+
+  .hero-card {
+    padding: 16px 12px 20px !important;
+  }
+}
