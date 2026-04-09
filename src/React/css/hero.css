@@ -100,6 +100,7 @@
   0% {
     background-position: 0% 50%;
   }
+
   100% {
     background-position: 220% 50%;
   }
@@ -286,6 +287,7 @@
   from {
     transform: translateY(0);
   }
+
   to {
     transform: translateY(-900px);
   }
@@ -310,6 +312,7 @@
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -334,6 +337,7 @@
     transform: translateX(100%);
     opacity: 0;
   }
+
   to {
     transform: translateX(0);
     opacity: 1;
@@ -451,25 +455,26 @@
 }
 
 /* ============================= */
-/* 🔥 FINAL MOBILE FIX */
+/* FINAL MOBILE FIX */
 @media (max-width: 768px) {
-
   .hero {
-    padding: 82px 0 16px !important; /* ❌ removed side padding */
+    padding: 82px 0 16px !important;
   }
 
   .hero-card {
     width: 100% !important;
     max-width: 100% !important;
     margin: 0 !important;
-
-    padding: 18px 12px !important; /* ✅ controlled padding */
+    padding: 18px 14px !important;
     box-sizing: border-box !important;
+    min-height: auto;
   }
 
   .hero-main {
     grid-template-columns: 1fr !important;
     width: 100% !important;
+    min-height: auto !important;
+    gap: 18px !important;
   }
 
   .hero-left,
@@ -488,11 +493,13 @@
     width: 100% !important;
     max-width: 300px !important;
     margin: 0 auto !important;
+    padding: 0 !important;
     transform: none !important;
   }
 
   .hero-buttons {
     width: 100% !important;
+    align-items: stretch !important;
   }
 
   .hero-buttons .btn {
@@ -501,62 +508,19 @@
 }
 
 /* ============================= */
-/* 🔥 SMALL MOBILE FIX */
+/* SMALL MOBILE FIX */
 @media (max-width: 480px) {
-
-  .hero {
-    padding: 75px 4px 14px !important;
-  }
-
-  .hero-card {
-    width: calc(100% - 2px) !important;
-    max-width: calc(100% - 2px) !important;
-    padding: 16px 8px !important;
-  }
-
-  .hero-illustration {
-    max-width: 260px !important;
-  }
-}
-
-/* ============================= */
-/* 🔥 SMALL MOBILE FIX */
-@media (max-width: 480px) {
-
   .hero {
     padding: 75px 0 14px !important;
   }
 
   .hero-card {
     width: 100% !important;
-    padding: 16px 10px !important;
+    max-width: 100% !important;
+    padding: 16px 12px !important;
   }
 
   .hero-illustration {
     max-width: 260px !important;
-  }
-}
-
-@media (max-width: 768px) {
-  .hero {
-    padding: 82px 14px 18px !important;
-  }
-
-  .hero-card {
-    width: 100% !important;
-    max-width: 100% !important;
-    margin: 0 auto !important;
-    padding: 18px 14px 22px !important;
-    box-sizing: border-box !important;
-  }
-}
-
-@media (max-width: 480px) {
-  .hero {
-    padding: 78px 12px 14px !important;
-  }
-
-  .hero-card {
-    padding: 16px 12px 20px !important;
   }
 }

@@ -105,7 +105,7 @@ body {
 }
 
 /* ============================= */
-/* MOBILE */
+/* MOBILE (🔥 FIX APPLIED HERE) */
 @media (max-width: 768px) {
   .scroll-container {
     scroll-snap-type: none;
@@ -120,7 +120,11 @@ body {
   .experience,
   .projects,
   .proficiency {
-    margin: 10px;
+    margin-left: 0;   /* ✅ FIX */
+    margin-right: 0;  /* ✅ FIX */
+    margin-top: 10px;
+    margin-bottom: 10px;
+
     padding: 20px;
     border-radius: 16px;
   }
@@ -138,7 +142,7 @@ body {
 }
 
 /* ============================= */
-/* SMALL MOBILE */
+/* SMALL MOBILE (🔥 FIX APPLIED HERE) */
 @media (max-width: 480px) {
   .scroll-container {
     padding-top: 76px;
@@ -150,7 +154,11 @@ body {
   .experience,
   .projects,
   .proficiency {
-    margin: 8px;
+    margin-left: 0;   /* ✅ FIX */
+    margin-right: 0;  /* ✅ FIX */
+    margin-top: 8px;
+    margin-bottom: 8px;
+
     padding: 16px;
     border-radius: 14px;
   }
@@ -161,23 +169,5 @@ body {
 
   .hero p {
     font-size: 0.92rem;
-  }
-}
-
-/* ============================= */
-/* 🔥 FINAL FIX (ADD AT VERY END) */
-/* removes extra side gap in mobile */
-
-@media (max-width: 768px) {
-  .hero {
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-  }
-}
-
-@media (max-width: 480px) {
-  .hero {
-    margin-left: 0 !important;
-    margin-right: 0 !important;
   }
 }
