@@ -9,7 +9,7 @@
 }
 
 /* ============================= */
-/* TITLE */
+/* 🧠 TITLE */
 .exp-title {
   text-align: center;
   font-size: 3rem;
@@ -17,10 +17,10 @@
 }
 
 /* ============================= */
-/* TIMELINE CONTAINER */
+/* 📍 TIMELINE */
 .timeline {
   position: relative;
-  max-width: 700px;   /* clean width */
+  max-width: 700px;
   margin: 0 auto;
 }
 
@@ -37,7 +37,7 @@
 }
 
 /* ============================= */
-/* ROW */
+/* 📦 ROW */
 .timeline-row {
   position: relative;
   display: flex;
@@ -47,7 +47,7 @@
 }
 
 /* ============================= */
-/* NODE */
+/* 🔘 NODE */
 .node {
   position: absolute;
   left: 50%;
@@ -61,9 +61,9 @@
 }
 
 /* ============================= */
-/* CARD */
+/* 💎 CARD */
 .exp-card {
-  width: 45%;
+  width: 43%;
   padding: 18px;
   border-radius: 16px;
   background: rgba(255,255,255,0.06);
@@ -77,14 +77,15 @@
 }
 
 /* ============================= */
-/* YEAR */
+/* 🗓 YEAR */
 .year-label {
   width: 45%;
   font-size: 0.85rem;
   color: var(--subtext-color);
 }
 
-/* ALIGNMENT */
+/* ============================= */
+/* LEFT ALIGN */
 .timeline-row.left .exp-card {
   order: 1;
 }
@@ -95,6 +96,8 @@
   padding-right: 20px;
 }
 
+/* ============================= */
+/* RIGHT ALIGN */
 .timeline-row.right .exp-card {
   order: 2;
 }
@@ -119,34 +122,53 @@
 }
 
 /* ============================= */
-/* 📱 MOBILE */
+/* 📱 MOBILE FIX */
 @media (max-width: 768px) {
 
+  .experience {
+    padding: 90px 12px 50px;
+  }
+
+  .timeline {
+    max-width: 100%;
+  }
+
+  /* 🔥 LINE */
   .timeline::before {
-    left: 12px;
+    left: 16px;
     transform: none;
   }
 
+  /* 🔥 NODE */
+  .node {
+    left: 16px;
+    transform: translateX(-50%);
+    width: 12px;
+    height: 12px;
+  }
+
+  /* 🔥 ROW */
   .timeline-row {
     flex-direction: column;
     align-items: flex-start;
-    margin-bottom: 40px;
+    margin-bottom: 35px;
   }
 
-  .node {
-    left: 12px;
-  }
-
+  /* 🔥 YEAR */
   .year-label {
     width: auto;
-    margin-left: 30px;
+    margin-left: 36px;
     margin-bottom: 6px;
+    font-size: 0.8rem;
     text-align: left !important;
     padding: 0;
   }
 
+  /* 🔥 CARD */
   .exp-card {
-    width: calc(100% - 30px);
-    margin-left: 30px;
+    width: calc(100% - 36px);
+    margin-left: 36px;
+    padding: 16px;
+    border-radius: 14px;
   }
 }
