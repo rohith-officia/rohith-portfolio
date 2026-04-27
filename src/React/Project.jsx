@@ -35,7 +35,7 @@ const projects = [
   },
   {
   name: "Harmoniq - Music Streaming Platform",
-  desc: "Built a full-stack music streaming app with JWT auth, role-based access, and optimized streaming performance.",
+  desc: "Full-stack music streaming app with auth, playlists, likes, and real-time playback.",
   tech: ["Spring Boot", "React", "PostgreSQL", "JWT", "REST APIs"],
   git:  "https://github.com/rohith-officia/Harmoniq-backend", // update if different
 },
