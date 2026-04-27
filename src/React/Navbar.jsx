@@ -28,6 +28,27 @@ export default function Navbar() {
     localStorage.setItem("theme", theme);
   }, [theme]);
 
+  const moveIndicator = (el) => {
+    const parent = el?.parentElement;
+
+    if (!el || !parent || !indicatorRef.current || window.innerWidth <= 768) {
+      return;
+    }
+
+    const rect = el.getBoundingClientRect();
+    const parentRect = parent.getBoundingClientRect();
+
+    indicatorRef.current.style.width = `${rect.width}px`;
+    indicatorRef.current.style.left = `${rect.left - parentRect.left}px`;
+  };
+
+  const resetIndicator = () => {
+    const activeEl = itemsRef.current[active];
+    if (activeEl) {
+      moveIndicator(activeEl);
+    }
+  };
+
   const toggleTheme = () => {
     setTheme((prev) => (prev === "light" ? "dark" : "light"));
   };
@@ -47,24 +68,22 @@ export default function Navbar() {
   };
 
   useEffect(() => {
-    const el = itemsRef.current[active];
-    if (el && indicatorRef.current && window.innerWidth > 768) {
-      indicatorRef.current.style.width = `${el.offsetWidth}px`;
-      indicatorRef.current.style.left = `${el.offsetLeft}px`;
-    }
+    resetIndicator();
   }, [active]);
 
   useEffect(() => {
     const handleScroll = () => {
       const navbar = document.querySelector(".nav-wrapper");
       const navbarHeight = navbar ? navbar.offsetHeight : 0;
-      const scrollPos = window.scrollY + navbarHeight + 10;
+      const scrollPos = window.scrollY + navbarHeight + 20;
 
       menuItems.forEach((item, index) => {
         const section = document.getElementById(item.id);
+
         if (section) {
           const top = section.offsetTop;
           const bottom = top + section.offsetHeight;
+
           if (scrollPos >= top && scrollPos < bottom) {
             setActive(index);
           }
@@ -72,24 +91,33 @@ export default function Navbar() {
       });
 
       const currentScroll = window.scrollY;
+
       setHidden(currentScroll > lastScrollRef.current && currentScroll > 100);
       lastScrollRef.current = currentScroll;
     };
 
+    handleScroll();
+
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [menuItems]);
+    window.addEventListener("resize", resetIndicator);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", resetIndicator);
+    };
+  }, [menuItems, active]);
 
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth > 768) {
         setMenuOpen(false);
+        resetIndicator();
       }
     };
 
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  }, [active]);
 
   useEffect(() => {
     document.body.style.overflow =
@@ -116,17 +144,20 @@ export default function Navbar() {
                   ref={(el) => (itemsRef.current[index] = el)}
                   className={active === index ? "active" : ""}
                   onClick={() => handleClick(index, item.id)}
+                  onMouseEnter={(e) => moveIndicator(e.currentTarget)}
+                  onMouseLeave={resetIndicator}
                 >
                   {item.name}
                 </li>
               ))}
+
               <span ref={indicatorRef} className="nav-indicator"></span>
             </ul>
           </div>
 
           <div className="nav-mobile-actions">
             <div
-              className="mobile-menu-btn"
+              className={`mobile-menu-btn ${menuOpen ? "open" : ""}`}
               onClick={() => setMenuOpen((prev) => !prev)}
               aria-label="Open menu"
               role="button"
@@ -146,6 +177,7 @@ export default function Navbar() {
               className="theme-toggle desktop-toggle"
               onClick={toggleTheme}
               type="button"
+              aria-label="Toggle theme"
             >
               <div className={`toggle-track ${theme}`}>
                 <span className="toggle-circle">
@@ -165,17 +197,20 @@ export default function Navbar() {
       <div className={`mobile-menu-panel ${menuOpen ? "open" : ""}`}>
         <div className="mobile-menu-header">
           <span>Menu</span>
+
           <button
             type="button"
             className="mobile-close-btn"
             onClick={() => setMenuOpen(false)}
+            aria-label="Close menu"
           >
-            
+            ×
           </button>
         </div>
 
         <div className="mobile-theme-row">
           <span>Theme</span>
+
           <button className="theme-toggle" onClick={toggleTheme} type="button">
             <div className={`toggle-track ${theme}`}>
               <span className="toggle-circle">
