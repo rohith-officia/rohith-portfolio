@@ -36,7 +36,7 @@ const projects = [
   {
   name: "Harmoniq - Music Streaming Platform",
   desc: "Full-stack music streaming app with auth, playlists, likes, and real-time playback.",
-  tech: ["Spring Boot", "React", "PostgreSQL", "JWT", "REST APIs"],
+  tech: ["Spring Boot", "React", "PostgreSQL", "REST APIs"],
   git:  "https://github.com/rohith-officia/Harmoniq-backend", // update if different
 },
 ];
