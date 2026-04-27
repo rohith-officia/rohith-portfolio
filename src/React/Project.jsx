@@ -33,6 +33,12 @@ const projects = [
     tech: ["Spring Boot", "PostgreSQL", "JWT"],
     git: "https://github.com/rohith-officia/Spring-boot-Authentication-project",
   },
+  {
+  name: "Harmoniq - Music Streaming Platform",
+  desc: "Developed a full-stack music streaming platform enabling song upload, streaming, and artist management. Implemented secure REST APIs with JWT authentication and role-based access for artists and users. Optimized media delivery and backend performance using efficient storage handling and streaming endpoints.",
+  tech: ["Spring Boot", "React", "PostgreSQL", "JWT", "REST APIs"],
+  git:  "https://github.com/rohith-officia/Harmoniq-backend", // update if different
+},
 ];
 
 export default function Projects() {
