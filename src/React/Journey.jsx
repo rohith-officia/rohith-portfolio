@@ -131,7 +131,7 @@ export default function Journey() {
                 <span>Present</span>
 
                 <h3>
-                  Master of Computer Applications
+                  Master's of Computer Applications
                 </h3>
 
                 <p>
@@ -143,14 +143,14 @@ export default function Journey() {
 
               <div>
 
-                <span>2022</span>
+                <span>2021</span>
 
                 <h3>
-                  B.Sc Computer Science
+                  Bachelor's of computer science
                 </h3>
 
                 <p>
-                  Calicut University
+                  Karpagam Academy of Higher Education
                 </p>
 
               </div>
