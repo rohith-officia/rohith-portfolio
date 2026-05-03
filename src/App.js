@@ -5,7 +5,6 @@ import Navbar from "./React/Navbar";
 import Hero from "./React/Hero";
 import About from "./React/About";
 import Project from "./React/Project";
-import Services from "./React/Services";
 import Journey from "./React/Journey";
 import Contact from "./React/Contact";
 import Footer from "./React/Footer";
