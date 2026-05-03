@@ -336,3 +336,19 @@ body.light .theme-toggle {
   color: rgba(17, 17, 17, 0.72) !important;
   border-color: rgba(17, 17, 17, 0.12) !important;
 }
+
+.nav-menu button.home-bubble {
+  padding: 16px 22px;
+  border-radius: 999px;
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+}
+
+.nav-menu button.home-bubble::after {
+  display: none;
+}
+
+.nav-menu button.home-bubble:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}

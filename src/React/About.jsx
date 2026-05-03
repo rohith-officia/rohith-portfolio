@@ -96,7 +96,7 @@ export default function About() {
           <div className="about-actions">
 
             <a
-              href="/resume.pdf"
+              href="Rohith.Resume.pdf"
               download
               className="resume-btn"
             >

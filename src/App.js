@@ -8,6 +8,8 @@ import Proficiency from "./React/Proficiency";
 import Project from "./React/Project";
 import Services from "./React/Services";
 import Journey from "./React/Journey";
+import Contact from "./React/Contact";
+import Footer from "./React/Footer";
 
 import "./React/css/styles.css";
 
@@ -20,6 +22,8 @@ function HomePage() {
       <Project />
       {/* <Proficiency /> */}
       {/* <Services /> */}
+      <Contact/>
+      <Footer/>
     </>
   );
 }

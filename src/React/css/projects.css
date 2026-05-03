@@ -1,4 +1,5 @@
 .projects {
+  margin-top: -100px;
   min-height: 100vh;
   padding: 130px 56px 180px;
   background: var(--bg-color);

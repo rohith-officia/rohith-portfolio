@@ -1,0 +1,182 @@
+.contact {
+    margin-top: -100px;
+  min-height: 100vh;
+  padding: 110px 56px;
+  background: var(--bg-color);
+  color: var(--text-color);
+  font-family: "Inter", sans-serif;
+
+  display: grid;
+  grid-template-columns: .95fr 1.05fr;
+  gap: 70px;
+  align-items: center;
+}
+
+/* LEFT */
+
+.contact-label {
+  margin: 0 0 20px;
+  color: var(--accent);
+
+  font-size: 10px;
+  font-weight: 900;
+
+  letter-spacing: .28em;
+
+  text-transform: uppercase;
+}
+
+.contact-left h2 {
+  margin: 0;
+
+  font-family: "Syne", sans-serif;
+
+  font-size: clamp(56px,7vw,110px);
+
+  line-height: .8;
+
+  letter-spacing: -.09em;
+}
+
+.contact-left h2 span {
+  color: transparent;
+  -webkit-text-stroke: 1px var(--text-color);
+}
+
+.contact-desc {
+  max-width: 480px;
+
+  margin-top: 32px;
+
+  color: var(--sub-text);
+
+  font-size: 14px;
+
+  line-height: 1.75;
+}
+
+/* RIGHT */
+
+.contact-right {
+  display: grid;
+
+  grid-template-columns: repeat(2,1fr);
+
+  gap: 14px;
+}
+
+.contact-card {
+  position: relative;
+
+  min-height: 140px;
+
+  padding: 24px;
+
+  border-radius: 24px;
+
+  border: 1px solid var(--border-color);
+
+  color: var(--text-color);
+
+  text-decoration: none;
+
+  overflow: hidden;
+
+  transition: .45s cubic-bezier(.22,1,.36,1);
+}
+
+.contact-card::before {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  background: var(--text-color);
+
+  transform: translateX(-101%);
+
+  transition: .55s cubic-bezier(.22,1,.36,1);
+
+  z-index: 0;
+}
+
+.contact-card span,
+.contact-card h3,
+.contact-card p {
+  position: relative;
+  z-index: 2;
+}
+
+.contact-card span {
+  color: var(--accent);
+
+  font-size: 10px;
+
+  font-weight: 900;
+
+  letter-spacing: .16em;
+
+  text-transform: uppercase;
+}
+
+.contact-card h3 {
+  margin: 18px 0 10px;
+
+  font-family: "Syne", sans-serif;
+
+  font-size: clamp(22px,2.2vw,34px);
+
+  line-height: .95;
+
+  letter-spacing: -.05em;
+}
+
+.contact-card p {
+  margin: 0;
+
+  color: var(--sub-text);
+
+  font-size: 12px;
+
+  font-weight: 700;
+}
+
+.contact-card:hover {
+  color: var(--bg-color);
+
+  transform: translateY(-4px);
+}
+
+.contact-card:hover::before {
+  transform: translateX(0);
+}
+
+.contact-card:hover span,
+.contact-card:hover p {
+  color: var(--bg-color);
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+  .contact{
+    padding:90px 22px;
+
+    grid-template-columns:1fr;
+
+    gap:40px;
+  }
+
+  .contact-right{
+    grid-template-columns:1fr;
+  }
+
+  .contact-card{
+    min-height:120px;
+
+    padding:20px;
+  }
+
+}

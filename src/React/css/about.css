@@ -1,4 +1,5 @@
 .about {
+  margin-top: 20px; /* moved slightly down */
   min-height: 100vh;
   padding: 120px 56px;
   background: var(--bg-color);
