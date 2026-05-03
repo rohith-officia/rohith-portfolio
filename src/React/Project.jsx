@@ -1,191 +1,117 @@
-import React, { useRef, useEffect, useState } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 import "./css/projects.css";
 
-const projects = [
-  {
-    name: "Portfolio Website",
-    desc: "Modern animated portfolio with smooth UI and interactions.",
-    tech: ["React", "Framer Motion", "CSS"],
-    git: "https://github.com/rohith-officia/rohith-portfolio",
-  },
-  {
-    name: "Turf Booking System",
-    desc: "Booking platform with authentication and slot management.",
-    tech: ["Django", "JWT", "SQL"],
-    git: "https://github.com/rohith-officia/Turf-management",
-  },
-  {
-    name: "News Aggregator API",
-    desc: "REST API to fetch categorized and filtered news data.",
-    tech: ["Django", "REST API"],
-    git: "https://github.com/rohith-officia/News-Aggregator",
-  },
-  {
-    name: "Grievance Redressal System",
-    desc: "Full-stack complaint system with tracking and communication.",
-    tech: ["Spring Boot", "PostgreSQL", "React"],
-    git: "https://github.com/rohith-officia/grievance-redressal-system",
-  },
-  {
-    name: "Spring-boot-Authentication-project",
-    desc: "Handles user login, registration, JWT auth, and role-based access.",
-    tech: ["Spring Boot", "PostgreSQL", "JWT"],
-    git: "https://github.com/rohith-officia/Spring-boot-Authentication-project",
-  },
-  {
-  name: "Harmoniq - Music Streaming Platform",
-  desc: "Full-stack music streaming app with auth, playlists, likes, and real-time playback.",
-  tech: ["Spring Boot", "React", "PostgreSQL", "REST APIs"],
-  git:  "https://github.com/rohith-officia/Harmoniq-backend", // update if different
-},
-];
-
-export default function Projects() {
-  const scrollRef = useRef(null);
-  const [active, setActive] = useState("All");
-
-  const filteredProjects =
-    active === "All"
-      ? projects
-      : projects.filter((p) => p.tech.includes(active));
-
-  // 🔥 DRAG SCROLL (same as yours)
-  useEffect(() => {
-    const container = scrollRef.current;
-    if (!container) return;
-
-    let isDragging = false;
-    let startX, scrollLeft;
-
-    const mouseDown = (e) => {
-      isDragging = true;
-      container.classList.add("dragging");
-      startX = e.pageX - container.offsetLeft;
-      scrollLeft = container.scrollLeft;
-    };
-
-    const mouseLeave = () => {
-      isDragging = false;
-      container.classList.remove("dragging");
-    };
-
-    const mouseUp = () => {
-      isDragging = false;
-      container.classList.remove("dragging");
-    };
-
-    const mouseMove = (e) => {
-      if (!isDragging) return;
-      e.preventDefault();
-      const x = e.pageX - container.offsetLeft;
-      const walk = (x - startX) * 2;
-      container.scrollLeft = scrollLeft - walk;
-    };
-
-    container.addEventListener("mousedown", mouseDown);
-    container.addEventListener("mouseleave", mouseLeave);
-    container.addEventListener("mouseup", mouseUp);
-    container.addEventListener("mousemove", mouseMove);
-
-    return () => {
-      container.removeEventListener("mousedown", mouseDown);
-      container.removeEventListener("mouseleave", mouseLeave);
-      container.removeEventListener("mouseup", mouseUp);
-      container.removeEventListener("mousemove", mouseMove);
-    };
-  }, []);
-
-  // 🔥 CENTER CARD
-  useEffect(() => {
-    const container = scrollRef.current;
-    if (!container) return;
-
-    const setCenterCard = () => {
-      const cards = container.querySelectorAll(".project-card");
-      const rect = container.getBoundingClientRect();
-      const center = rect.left + rect.width / 2;
-
-      let closest = null;
-      let minDist = Infinity;
-
-      cards.forEach((card) => {
-        card.classList.remove("center");
-
-        const box = card.getBoundingClientRect();
-        const cardCenter = box.left + box.width / 2;
-        const dist = Math.abs(center - cardCenter);
-
-        if (dist < minDist) {
-          minDist = dist;
-          closest = card;
-        }
-      });
-
-      if (closest) closest.classList.add("center");
-    };
-
-    let raf;
-    const handleScroll = () => {
-      cancelAnimationFrame(raf);
-      raf = requestAnimationFrame(setCenterCard);
-    };
-
-    container.addEventListener("scroll", handleScroll);
-    setCenterCard();
-
-    return () => container.removeEventListener("scroll", handleScroll);
-  }, [filteredProjects]);
+export default function Project() {
+  const projects = [
+    {
+      no: "01",
+      name: "Harmoniq",
+      type: "Music Streaming Platform",
+      desc: "Full-stack music streaming platform with song upload, streaming, artist management, playlists, likes, and listening history.",
+      tech: ["Spring Boot", "React", "PostgreSQL", "JWT"],
+      live: "https://harmoniq-song.vercel.app",
+      code: "https://github.com/rohith-officia",
+    },
+    {
+      no: "02",
+      name: "Complaint System",
+      type: "Enterprise Backend System",
+      desc: "JWT-secured complaint management platform with role-based access, complaint tracking, admin updates, and email notifications.",
+      tech: ["Spring Boot", "PostgreSQL", "JWT", "REST API"],
+      live: "#",
+      code: "https://github.com/rohith-officia",
+    },
+    {
+      no: "03",
+      name: "News Aggregator",
+      type: "Backend API Project",
+      desc: "REST API that aggregates news data with filtering, search, pagination, serializers, and optimized query handling.",
+      tech: ["Django", "DRF", "Python", "REST API"],
+      live: "#",
+      code: "https://github.com/rohith-officia",
+    },
+    {
+      no: "04",
+      name: "Turf Booking",
+      type: "Booking Management Platform",
+      desc: "Online turf booking platform with secure authentication, slot booking, availability management, and user booking history.",
+      tech: ["Django", "DRF", "PostgreSQL", "JWT"],
+      live: "#",
+      code: "https://github.com/rohith-officia",
+    },
+  ];
 
   return (
-    <section id="project" className="projects">
-      <h2 className="projects-title">My Work</h2>
-
-      {/* 🔥 FILTER BUTTONS */}
-      <div className="project-tabs">
-        {["All", "React", "Django", "Spring Boot"].map((tab) => (
-          <button
-            key={tab}
-            className={active === tab ? "active" : ""}
-            onClick={() => setActive(tab)}
-          >
-            {tab}
-          </button>
-        ))}
+    <section id="projects" className="projects">
+      <div className="projects-hero">
+        <p>MY WORK</p>
+        <h2>
+          Selected
+          <br />
+          projects.
+        </h2>
       </div>
 
-      {/* 🔥 SCROLL */}
-      <div className="projects-scroll" ref={scrollRef}>
-        {filteredProjects.map((project, i) => (
+      <div className="project-stack">
+        {projects.map((project, index) => (
           <motion.div
-            key={i}
             className="project-card"
-            initial={{ opacity: 0, y: 50 }} // start slightly below
-            whileInView={{ opacity: 1, y: 0 }} // fade up on view
-            viewport={{ once: false, amount: 0.3 }} // animate every time scrolls in view
-            transition={{ duration: 0.6, delay: i * 0.1 }}
+            key={project.no}
+            style={{
+              top: `${115 + index * 28}px`,
+              zIndex: index + 1,
+            }}
+            initial={{ opacity: 0, y: 80, scale: 0.96 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            viewport={{ once: true, amount: 0.35 }}
+            transition={{
+              duration: 0.8,
+              ease: [0.22, 1, 0.36, 1],
+            }}
           >
-            <div className="card-content">
-              <div className="tags">
-                {project.tech.map((t, j) => (
-                  <span key={j}>{t}</span>
+            <div className="project-left">
+              <span>{project.no}</span>
+              <p>{project.type}</p>
+            </div>
+
+            <div className="project-right">
+              <h3>{project.name}</h3>
+
+              <p className="project-desc">{project.desc}</p>
+
+              <div className="project-tech">
+                {project.tech.map((item) => (
+                  <span key={item}>{item}</span>
                 ))}
               </div>
 
-              <h3>{project.name}</h3>
-              <p>{project.desc}</p>
+              <div className="project-actions">
+                <a href={project.live} target="_blank" rel="noreferrer">
+                  <strong>View Website</strong>
+                  <span>↗</span>
+                </a>
 
-              <a
-                href={project.git}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="view-btn"
-              >
-                View Code
-              </a>
+                <a href={project.code} target="_blank" rel="noreferrer">
+                  <strong>View Code</strong>
+                  <span>↗</span>
+                </a>
+              </div>
             </div>
           </motion.div>
         ))}
+      </div>
+
+      <div className="more-work-wrap">
+        <a
+          href="https://github.com/rohith-officia"
+          target="_blank"
+          rel="noreferrer"
+          className="more-work-btn"
+        >
+          <strong>See More Work</strong>
+          <span>↗</span>
+        </a>
       </div>
     </section>
   );
