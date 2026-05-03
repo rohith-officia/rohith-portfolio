@@ -8,12 +8,13 @@ import Project from "./React/Project";
 import Journey from "./React/Journey";
 import Contact from "./React/Contact";
 import Footer from "./React/Footer";
+import Loader from "./React/Loader";
 
 import "./React/css/styles.css";
 
 function HomePage() {
   return (
-    <>
+    <Loader>
       <Navbar />
       <Hero />
       <About />
@@ -22,7 +23,7 @@ function HomePage() {
       {/* <Services /> */}
       <Contact/>
       <Footer/>
-    </>
+    </Loader>
   );
 }
 
