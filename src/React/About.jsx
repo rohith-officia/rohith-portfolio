@@ -75,12 +75,12 @@ export default function About() {
           <div className="about-stats">
 
             <div>
-              <h3>10+</h3>
+              <h3>20+</h3>
               <p>Projects</p>
             </div>
 
             <div>
-              <h3>1.7+</h3>
+              <h3>2</h3>
               <p>Years</p>
             </div>
 
