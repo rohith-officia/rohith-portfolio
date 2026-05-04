@@ -4,7 +4,15 @@ import "./css/loader.css";
 export default function Loader({ children }) {
   const [loading, setLoading] = useState(true);
 
+  const [darkMode, setDarkMode] = useState(true);
+
   useEffect(() => {
+    const savedTheme = localStorage.getItem("theme");
+
+    if (savedTheme) {
+      setDarkMode(savedTheme === "dark");
+    }
+
     const timer = setTimeout(() => {
       setLoading(false);
     }, 2200);
@@ -14,9 +22,12 @@ export default function Loader({ children }) {
 
   if (loading) {
     return (
-      <div className="loader-screen">
+      <div
+        className={`loader-screen ${
+          darkMode ? "loader-dark" : "loader-light"
+        }`}
+      >
         <div className="loader-content">
-
           <h1 className="loader-logo">
             rohith.dev
           </h1>
@@ -28,7 +39,6 @@ export default function Loader({ children }) {
           {/* <p className="loader-text">
             Building experiences...
           </p> */}
-
         </div>
       </div>
     );

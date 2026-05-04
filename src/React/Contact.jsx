@@ -37,7 +37,9 @@ export default function Contact() {
 >
 
   <a
-    href="mailto:yourmail@gmail.com"
+    href="https://mail.google.com/mail/?view=cm&fs=1&to=rohith.rajan2628@gmail.com"
+    target="_blank"
+    rel="noreferrer"
     className="contact-card"
   >
     <span>Email</span>
@@ -46,19 +48,19 @@ export default function Contact() {
   </a>
 
   <a
-    href="https://wa.me/91YOURNUMBER"
+    href="https://wa.me/919744093170"
     target="_blank"
     rel="noreferrer"
     className="contact-card"
-  >
+>
     <span>WhatsApp</span>
     <h3>Quick Chat</h3>
     <p>Message instantly →</p>
-  </a>
+</a>
 
 
   <a
-    href="https://www.linkedin.com/in/your-linkedin"
+    href="https://www.linkedin.com/in/rohith-r-b61409249/"
     target="_blank"
     rel="noreferrer"
     className="contact-card"
