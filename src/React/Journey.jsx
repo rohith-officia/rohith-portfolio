@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import Navbar from "./Navbar";
 import "./css/journey.css";
 
+
+
 export default function Journey() {
+
+    useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const internships = [
     {

@@ -19,8 +19,8 @@ export default function Navbar() {
   const items = isJourneyPage
     ? [{ id: "home", label: "HOME", route: "/" }]
     : [
-        { id: "projects", label: "WORK" },
         { id: "about", label: "ABOUT" },
+        { id: "projects", label: "WORK" },
         { id: "contact", label: "CONTACT" },
       ];
 
@@ -38,13 +38,16 @@ export default function Navbar() {
         return;
       }
 
+      const sections = ["home", "about", "projects", "contact"];
       let current = "home";
 
-      ["home", "projects", "about", "contact"].forEach((id) => {
+      sections.forEach((id) => {
         const section = document.getElementById(id);
         if (!section) return;
 
-        if (window.scrollY >= section.offsetTop - 180) {
+        const triggerPoint = section.offsetTop - window.innerHeight * 0.35;
+
+        if (window.scrollY >= triggerPoint) {
           current = id;
         }
       });
