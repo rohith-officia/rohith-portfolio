@@ -11,16 +11,16 @@ export default function Project() {
       desc: "Full-stack music streaming platform with song upload, streaming, artist management, playlists, likes, and listening history.",
       tech: ["Spring Boot", "React", "PostgreSQL", "JWT"],
       live: "https://harmoniq-song.vercel.app",
-      code: "https://github.com/rohith-officia",
+      code: "https://github.com/rohith-officia/Harmoniq-backend",
     },
     {
       no: "02",
-      name: "Complaint System",
+      name: "Grievance Redressal System",
       type: "Enterprise Backend System",
-      desc: "JWT-secured complaint management platform with role-based access, complaint tracking, admin updates, and email notifications.",
+      desc: "JWT-secured Grievance Redressal platform with role-based access, complaint tracking, admin updates, and email notifications.",
       tech: ["Spring Boot", "PostgreSQL", "JWT", "REST API"],
       live: "#",
-      code: "https://github.com/rohith-officia",
+      code: "https://github.com/rohith-officia/grievance-redressal-system",
     },
     {
       no: "03",
@@ -29,7 +29,7 @@ export default function Project() {
       desc: "REST API that aggregates news data with filtering, search, pagination, serializers, and optimized query handling.",
       tech: ["Django", "DRF", "Python", "REST API"],
       live: "#",
-      code: "https://github.com/rohith-officia",
+      code: "https://github.com/rohith-officia/News-Aggregator",
     },
     {
       no: "04",
@@ -38,7 +38,7 @@ export default function Project() {
       desc: "Online turf booking platform with secure authentication, slot booking, availability management, and user booking history.",
       tech: ["Django", "DRF", "PostgreSQL", "JWT"],
       live: "#",
-      code: "https://github.com/rohith-officia",
+      code: "https://github.com/rohith-officia/Turf-management",
     },
   ];
 

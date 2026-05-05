@@ -61,23 +61,51 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [isJourneyPage]);
 
-  const scrollToSection = (id) => {
-    const section = document.getElementById(id);
-
-    if (!section) {
+  const goHome = () => {
+    if (location.pathname !== "/") {
       navigate("/");
+
       setTimeout(() => {
-        document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-      }, 150);
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      }, 100);
+
       return;
     }
 
-    section.scrollIntoView({ behavior: "smooth" });
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
+  const scrollToSection = (id) => {
+    if (location.pathname !== "/") {
+      navigate("/");
+
+      setTimeout(() => {
+        document.getElementById(id)?.scrollIntoView({
+          behavior: "smooth",
+        });
+      }, 150);
+
+      return;
+    }
+
+    const section = document.getElementById(id);
+
+    if (!section) return;
+
+    section.scrollIntoView({
+      behavior: "smooth",
+    });
   };
 
   const handleNavClick = (item) => {
     if (item.route) {
-      navigate(item.route);
+      goHome();
       return;
     }
 
@@ -87,7 +115,7 @@ export default function Navbar() {
   return (
     <header className={`navbar ${scrolled ? "scrolled" : ""}`}>
       <div className="navbar-inner">
-        <button className="nav-logo" onClick={() => navigate("/")}>
+        <button className="nav-logo" onClick={goHome}>
           rohith.dev
         </button>
 

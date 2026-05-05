@@ -152,7 +152,7 @@ export default function Journey() {
                 <span>2021</span>
 
                 <h3>
-                  Bachelor's of computer science
+                  Bachelor's of Computer Science
                 </h3>
 
                 <p>
