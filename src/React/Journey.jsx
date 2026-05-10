@@ -110,8 +110,8 @@ export default function Journey() {
               <h2>Software Developer</h2>
               <h3>TCS · 2024 — Present</h3>
               <p>
-                Building secure enterprise applications, scalable backend APIs,
-                authentication systems, and production-ready business solutions.
+                Designing scalable backend systems, secure enterprise applications, 
+                authentication platforms, and production-ready software solutions for real-world business needs.
               </p>
             </div>
           </motion.div>

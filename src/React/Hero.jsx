@@ -8,7 +8,10 @@ export default function Hero() {
         <p className="hero-role">SOFTWARE DEVELOPER</p>
 
         <h1 className="hero-title">
-          Rohith
+          Rohit
+          <span className="hero-h-wrap">
+            <span className="hero-h">h</span>
+          </span>
           <br />
           Rajan
         </h1>
