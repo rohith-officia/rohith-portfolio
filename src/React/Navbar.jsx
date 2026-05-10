@@ -10,6 +10,7 @@ export default function Navbar() {
 
   const [scrolled, setScrolled] = useState(false);
   const [active, setActive] = useState("home");
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const [darkMode, setDarkMode] = useState(() => {
     const savedTheme = localStorage.getItem("theme");
@@ -17,7 +18,7 @@ export default function Navbar() {
   });
 
   const items = isJourneyPage
-    ? [{ id: "home", label: "HOME", route: "/" }]
+    ? [{ id: "home", label: "HOME" }]
     : [
         { id: "about", label: "ABOUT" },
         { id: "projects", label: "WORK" },
@@ -38,16 +39,13 @@ export default function Navbar() {
         return;
       }
 
-      const sections = ["home", "about", "projects", "contact"];
       let current = "home";
 
-      sections.forEach((id) => {
+      ["home", "about", "projects", "contact"].forEach((id) => {
         const section = document.getElementById(id);
         if (!section) return;
 
-        const triggerPoint = section.offsetTop - window.innerHeight * 0.35;
-
-        if (window.scrollY >= triggerPoint) {
+        if (window.scrollY >= section.offsetTop - window.innerHeight * 0.35) {
           current = id;
         }
       });
@@ -62,54 +60,42 @@ export default function Navbar() {
   }, [isJourneyPage]);
 
   const goHome = () => {
-    if (location.pathname !== "/") {
+    if (isJourneyPage) {
+      sessionStorage.setItem("from_journey", "true");
       navigate("/");
-
-      setTimeout(() => {
-        window.scrollTo({
-          top: 0,
-          behavior: "smooth",
-        });
-      }, 100);
-
+      setMenuOpen(false);
       return;
     }
 
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
+    if (location.pathname !== "/") {
+      navigate("/");
+      setMenuOpen(false);
+      return;
+    }
+
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    setMenuOpen(false);
   };
 
   const scrollToSection = (id) => {
-    if (location.pathname !== "/") {
-      navigate("/");
-
-      setTimeout(() => {
-        document.getElementById(id)?.scrollIntoView({
-          behavior: "smooth",
-        });
-      }, 150);
-
+    if (id === "home") {
+      goHome();
       return;
     }
 
     const section = document.getElementById(id);
 
-    if (!section) return;
-
-    section.scrollIntoView({
-      behavior: "smooth",
-    });
-  };
-
-  const handleNavClick = (item) => {
-    if (item.route) {
-      goHome();
+    if (!section) {
+      navigate("/");
+      setTimeout(() => {
+        document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+      }, 150);
+      setMenuOpen(false);
       return;
     }
 
-    scrollToSection(item.id);
+    section.scrollIntoView({ behavior: "smooth" });
+    setMenuOpen(false);
   };
 
   return (
@@ -119,11 +105,20 @@ export default function Navbar() {
           rohith.dev
         </button>
 
-        <nav className="nav-menu">
+        <button
+          className={`hamburger ${menuOpen ? "open" : ""}`}
+          onClick={() => setMenuOpen((prev) => !prev)}
+          aria-label="Toggle menu"
+        >
+          <span></span>
+          <span></span>
+        </button>
+
+        <nav className={`nav-menu ${menuOpen ? "open" : ""}`}>
           {items.map((item) => (
             <button
               key={item.id}
-              onClick={() => handleNavClick(item)}
+              onClick={() => scrollToSection(item.id)}
               className={`${active === item.id ? "active" : ""} ${
                 isJourneyPage && item.id === "home" ? "home-bubble" : ""
               }`}
