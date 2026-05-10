@@ -223,59 +223,45 @@
 /* ============================= */
 /* MOBILE */
 /* ============================= */
-@media (max-width: 900px) {
-  .navbar {
-    height: 78px;
-    padding: 0 18px;
+
+@media (max-width:768px){
+
+  .navbar{
+    height:76px;
+    padding:0 20px;
   }
 
-  .navbar.scrolled {
-    top: 12px;
-    height: 66px;
-    padding: 0;
+  .navbar.scrolled{
+    top:14px;
   }
 
-  .navbar-inner {
-    min-width: 0;
+  .navbar.scrolled .navbar-inner{
+    width:calc(100% - 24px);
+    height:62px;
+
+    padding:0 18px;
   }
 
-  .navbar.scrolled .navbar-inner {
-    width: calc(100% - 24px);
-    height: 58px;
-    padding: 0 16px;
+  .nav-logo{
+    font-size:1rem;
   }
 
-  .nav-logo {
-    font-size: 0.95rem;
-    white-space: nowrap;
+  .nav-menu{
+    gap:18px;
   }
 
-  .nav-menu {
-    gap: 10px;
+  .nav-menu button:not(.theme-toggle){
+    display:none;
   }
 
-  .nav-menu button:not(.theme-toggle):not(.home-bubble) {
-    display: none;
+  .theme-toggle{
+    height:38px;
+    padding:0 15px;
+
+    font-size:.65rem !important;
   }
 
-  .nav-menu button.home-bubble {
-    padding: 10px 14px;
-    font-size: 0.62rem;
-  }
-
-  .theme-toggle {
-    height: 38px;
-    padding: 0 13px;
-    font-size: 0.62rem !important;
-    letter-spacing: 0.1em !important;
-  }
-
-  .theme-toggle span {
-    width: 10px;
-    height: 10px;
-  }
 }
-
 /* ============================= */
 /* LIGHT MODE NAV FIX */
 /* ============================= */
