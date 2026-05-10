@@ -324,3 +324,80 @@ body:not(.light) .theme-toggle span::after {
     border-radius: 18px;
   }
 }
+
+@media (max-width: 768px) {
+  .hero {
+    min-height: 100svh;
+    padding: 110px 24px 60px;
+    overflow: hidden;
+  }
+
+  .hero-content {
+    min-height: auto;
+  }
+
+  .hero-role {
+    margin-bottom: 42px;
+    font-size: 11px;
+    letter-spacing: 0.26em;
+  }
+
+  .hero-title {
+    font-size: clamp(74px, 22vw, 94px);
+    line-height: 0.86;
+    letter-spacing: -0.07em;
+    max-width: 100%;
+    overflow-wrap: normal;
+    white-space: normal;
+  }
+
+  .hero-bottom-left {
+    position: static;
+    margin-top: 48px;
+    max-width: 100%;
+  }
+
+  .hero-bottom-left p {
+    font-size: 18px;
+    line-height: 1.55;
+  }
+
+  .hero-bottom-right {
+    position: static;
+    margin-top: 42px;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .hero-bottom-right span {
+    width: fit-content;
+    max-width: 100%;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    padding: 9px 16px;
+  }
+
+  .scroll-indicator {
+    display: none;
+  }
+}
+
+@media (max-width: 420px) {
+  .hero {
+    padding: 105px 22px 56px;
+  }
+
+  .hero-title {
+    font-size: clamp(68px, 21vw, 86px);
+    letter-spacing: -0.065em;
+  }
+
+  .hero-bottom-left p {
+    font-size: 17px;
+  }
+
+  .hero-bottom-right span {
+    font-size: 11px;
+    letter-spacing: 0.16em;
+  }
+}
