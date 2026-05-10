@@ -88,72 +88,7 @@
   border-color: color-mix(in srgb, var(--accent) 40%, transparent);
 }
 
-.hero-h {
-  display: inline-block;
 
-  opacity: 0;
-
-  color: var(--accent);
-
-  transform: translateY(115%);
-
-  animation:
-    revealH 1.35s cubic-bezier(.22,1,.36,1) forwards;
-
-  animation-delay: .65s; /* delay */
-
-  will-change:
-    transform,
-    opacity,
-    color;
-}
-
-
-@keyframes revealH {
-
-  0% {
-    opacity: 0;
-
-    color: var(--accent);
-
-    transform:
-      translateY(115%);
-  }
-
-
-  20% {
-    opacity: 1;
-
-    color: var(--accent);
-  }
-
-
-  65% {
-    color: var(--accent);
-
-    transform:
-      translateY(-8%);
-  }
-
-
-  82% {
-    color: var(--accent);
-
-    transform:
-      translateY(3%);
-  }
-
-
-  100% {
-    opacity: 1;
-
-    color: var(--text-color);
-
-    transform:
-      translateY(0);
-  }
-
-}
 /* SCROLL */
 .scroll-indicator {
   position: absolute;
