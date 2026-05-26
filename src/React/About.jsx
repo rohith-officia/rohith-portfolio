@@ -73,7 +73,7 @@ export default function About() {
 
           <div className="about-actions">
 
-            <a href="rohith.resume.pdf" download className="about-btn primary-btn">
+            <a href="rohith.software-developer" download className="about-btn primary-btn">
               <strong>Resume</strong>
               <span>↓</span>
             </a>
