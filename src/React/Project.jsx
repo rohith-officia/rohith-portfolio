@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import "./css/projects.css";
 
 export default function Project() {
@@ -32,14 +33,14 @@ export default function Project() {
       code: "https://github.com/rohith-officia/News-Aggregator",
     },
     {
-      no: "04",
-      name: "Turf Booking",
-      type: "Booking Management Platform",
-      desc: "Online turf booking platform with secure authentication, slot booking, availability management, and user booking history.",
-      tech: ["Django", "DRF", "PostgreSQL", "JWT"],
-      live: "#",
-      code: "https://github.com/rohith-officia/Turf-management",
-    },
+    no: "04",
+    name: "CodeForge",
+    type: "Developer Collaboration Platform",
+    desc: "A full-stack developer collaboration platform with secure authentication, project management, code-sharing features, and scalable backend services.",
+    tech: ["React", "Spring Boot", "PostgreSQL"],
+    live: "#",
+    code: "https://github.com/rohith-officia/CodeForge-Backend",
+  },
   ];
 
   return (
@@ -96,6 +97,11 @@ export default function Project() {
                   <strong>View Code</strong>
                   <span>↗</span>
                 </a>
+
+                <Link to={`/screenshots/${project.name.toLowerCase().replace(/\s+/g, "-")}`}>
+                  <strong>View Screenshots</strong>
+                  <span>↗</span>
+                </Link>
               </div>
             </div>
           </motion.div>
@@ -116,3 +122,4 @@ export default function Project() {
     </section>
   );
 }
+

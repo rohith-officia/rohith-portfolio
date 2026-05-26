@@ -10,6 +10,8 @@ import Contact from "./React/Contact";
 import Footer from "./React/Footer";
 import Loader from "./React/Loader";
 
+import ScreenshotsPage from "./React/ScreenshotsPage";
+
 import "./React/css/styles.css";
 
 function HomePage() {
@@ -19,21 +21,20 @@ function HomePage() {
       <Hero />
       <About />
       <Project />
-      {/* <Proficiency /> */}
-      {/* <Services /> */}
-      <Contact/>
-      <Footer/>
+      <Contact />
+      <Footer />
     </Loader>
   );
 }
 
-function App() {
+export default function App() {
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
       <Route path="/journey" element={<Journey />} />
+
+      {/* ✅ ONE dynamic route for all screenshots */}
+      <Route path="/screenshots/:project" element={<ScreenshotsPage />} />
     </Routes>
   );
 }
-
-export default App;
